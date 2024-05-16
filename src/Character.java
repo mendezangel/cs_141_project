@@ -4,14 +4,19 @@ public class Character {
     private int level;
     private int healthPoints;
     private int manaPoints;
+    private int attack;
+    private int defense;
     private final String characterClass;
 
     // Constructor
     public Character(String name, String characterClass) {
+        // some of these values (health, mana, attack) are hardcoded, in theory we will
+        // want to implement some logic to set these values based on what class player chooses
         this.name = name;
         this.level = 1;
         this.healthPoints = 100;
         this.manaPoints = 50;
+        this.attack = 5;
         this.characterClass = characterClass;
     }
 
@@ -62,6 +67,22 @@ public class Character {
 
     public void setManaPoints(int manaPoints) {
         this.manaPoints = manaPoints;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
     public String getCharacterClass() {
