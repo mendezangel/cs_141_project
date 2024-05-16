@@ -73,6 +73,7 @@ public class Main {
                     playerHP -= (enemyATK/3); //I decided to third the attack to make it more rewarding to use block correctly
                     System.out.println("The " + enemyName + "clonks you dealing" + (enemyATK/3) + " damage!");
                     //the "(enemyATK/3)" and all other statements will have to be changed if we add randomness to damage
+                    block = false;
                     turnTimer = true;
                 }
 
