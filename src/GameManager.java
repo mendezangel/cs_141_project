@@ -8,5 +8,7 @@ public class GameManager {
     public void initializeGame() {
         // in here we will handle all game initialization
         // we can meet to discuss what that might mean for our game
+
     }
+
 }

@@ -9,14 +9,14 @@ public class Character {
     private final String characterClass;
 
     // Constructor
-    public Character(String name, String characterClass) {
+    public Character(String name, String characterClass, int hp, int attack) {
         // some of these values (health, mana, attack) are hardcoded, in theory we will
         // want to implement some logic to set these values based on what class player chooses
         this.name = name;
         this.level = 1;
-        this.healthPoints = 100;
+        this.healthPoints = hp;
         this.manaPoints = 50;
-        this.attack = 5;
+        this.attack = attack;
         this.characterClass = characterClass;
     }
 
