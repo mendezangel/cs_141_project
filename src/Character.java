@@ -1,4 +1,4 @@
-import java.util.Scanner;
+    import java.util.Scanner;
 
 public class Character {
     // Fields
@@ -39,6 +39,14 @@ public class Character {
         int newHealth = health - this.attack;
         target.setHealthPoints(newHealth);
         // Implement attack logic here
+    }
+    
+        public void attackbutblock(Character target) {
+        //System.out.println(this.name + " attacks " + target.getName() + "!");
+        int health = target.getHealthPoints();
+        int newHealth = health - (this.attack/3);
+        target.setHealthPoints(newHealth);
+        // Added an attack that blocks some damage. This is the only new thing that I added here.
     }
 
     public void castSpell(Character target) {
