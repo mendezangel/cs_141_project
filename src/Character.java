@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Character {
     // Fields
     private String name;
@@ -6,10 +8,10 @@ public class Character {
     private int manaPoints;
     private int attack;
     private int defense;
-    private final String characterClass;
+    private String enemyType;
 
     // Constructor
-    public Character(String name, String characterClass, int hp, int attack) {
+    public Character(String name, int hp, int attack, String enemyType) {
         // some of these values (health, mana, attack) are hardcoded, in theory we will
         // want to implement some logic to set these values based on what class player chooses
         this.name = name;
@@ -17,12 +19,25 @@ public class Character {
         this.healthPoints = hp;
         this.manaPoints = 50;
         this.attack = attack;
-        this.characterClass = characterClass;
+        this.enemyType = enemyType;
     }
 
     // Methods
+    public static Character createPlayerCharacter() {
+        Scanner console = new Scanner(System.in);
+        System.out.print("please enter name for character: ");
+        String name = console.next();
+        int hp = 100;
+        int attack = 5;
+        return  new Character(name, hp, attack, null);
+    }
+
+    // Attack methods
     public void attack(Character target) {
         System.out.println(this.name + " attacks " + target.getName() + "!");
+        int health = target.getHealthPoints();
+        int newHealth = health - this.attack;
+        target.setHealthPoints(newHealth);
         // Implement attack logic here
     }
 
@@ -85,7 +100,12 @@ public class Character {
         this.defense = defense;
     }
 
-    public String getCharacterClass() {
-        return characterClass;
+
+    public String getEnemyType() {
+        return this.enemyType;
+    }
+
+    public void setEnemyType(String enemyType) {
+        this.enemyType = enemyType;
     }
 }

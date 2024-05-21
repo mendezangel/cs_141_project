@@ -37,6 +37,7 @@ public class Main {
                 switch (input) {
                     case "a":
                         enemyHP -= playerATK;
+                        enemy.attack(player);
                         System.out.println("The " + enemyName + " has been struck for " + playerATK + " damage leaving it with " + enemyHP + " Health!");
                         //100% the line above will not be kept. I'm just using it to see whats working. i would prefer grpahics or atleast some less basic text
                         turnTimer = false;

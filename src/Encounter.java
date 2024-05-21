@@ -1,6 +1,5 @@
-public class Encounter {
-    public Encounter() {
+import java.util.Scanner;
 
-    }
+public class Encounter {
 
 }
