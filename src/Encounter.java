@@ -5,30 +5,27 @@ import java.util.Scanner;
 
 public class Encounter {
 
-    public static void main(String[] args) {
-        //Just using these to test the battle. definately not optimal but I needed to do something and I ain't a master
-
-        TestEncounter();
-
-    }
     public static void TestEncounter() {
+        Character enemy = new Character("Foul Creature", 20, 4, "basic");
         Scanner pointless = new Scanner(System.in);
         System.out.println("hmm... it appears there's a fork in the road. Shall you go left or right?");
         String input = pointless.nextLine();
         if (Objects.equals(input, "left")) {
             System.out.println("You move towards the left path but you are accosted!!!!11!1one");
-            Battle();
+            Battle(enemy);
 
         } else if (Objects.equals(input, "right")) {
             System.out.println("You sprint towards the right path but you see a SCARY MONSTER AAAAAAA");
-            Battle();
+            Battle(enemy);
         } else {
-            System.out.println("Imma be real there's a path between the two and the monster can go between them so he's gonna come at you regardless so here's a battle");
-            Battle();
+            System.out.println("Imma be real there's a path between the " +
+                    "two and the monster can go between them so he's gonna come at you regardless" +
+                    " so here's a battle");
+            Battle(enemy);
         }
     }
 
-    public static void Battle() {
+    public static void Battle(Character enemy) {
         //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
         //also critical hits could work but I won't add them in this simple program
         //adding speed variables could work, or it can be a case-by-case basis. I'm just gonna default to player start
@@ -40,8 +37,9 @@ public class Encounter {
         boolean block = false;
 
         //initializing the player and monster in the battle is probably bad but I couldn't figure out how to not do it. still works.
-        Character player = new Character("Albert", 60, 5, "doesn't matter" ); //forgor about the null thing
-        Character enemy = new Character("Foul Creature", 20, 4, "basic"); //change the enemy type to "pipebomb" to get a different result. did it just to show different enemy types
+//        Character player = new Character("Albert", 60, 5, "doesn't matter" ); //forgor about the null thing
+        Character player = Main.playerCharacter;
+//        Character enemy = new Character("Foul Creature", 20, 4, "basic"); //change the enemy type to "pipebomb" to get a different result. did it just to show different enemy types
 
 
         System.out.println("It appears you hath been accosted by a " + enemy.getName() + "!");
@@ -96,7 +94,7 @@ public class Encounter {
                         System.out.println("The " + enemy.getName() + " clonks you dealing " + enemy.getAttack() + " damage! You have " + player.getHealthPoints() + " health.");
                         turnTimer = true;
                     } else {
-                        enemy.attackbutblock(player); //I decided to third the attack to make it more rewarding to use block correctly
+                        enemy.attackButBlock(player); //I decided to third the attack to make it more rewarding to use block correctly
                         System.out.println("The " + enemy.getName() + " clonks you dealing " + (enemy.getAttack() / 3) + " damage!");
                         //the "(enemyATK/3)" and all other statements will have to be changed if we add randomness to damage
                         block = false;

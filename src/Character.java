@@ -41,7 +41,7 @@ public class Character {
         // Implement attack logic here
     }
     
-        public void attackbutblock(Character target) {
+        public void attackButBlock(Character target) {
         //System.out.println(this.name + " attacks " + target.getName() + "!");
         int health = target.getHealthPoints();
         int newHealth = health - (this.attack/3);
