@@ -34,7 +34,7 @@ public class Character {
 
     // Attack methods
     public void attack(Character target) {
-        System.out.println(this.name + " attacks " + target.getName() + "!");
+//        System.out.println(this.name + " attacks " + target.getName() + "!");
         int health = target.getHealthPoints();
         int newHealth = health - this.attack;
         target.setHealthPoints(newHealth);
@@ -44,9 +44,8 @@ public class Character {
         public void attackButBlock(Character target) {
         //System.out.println(this.name + " attacks " + target.getName() + "!");
         int health = target.getHealthPoints();
-        int newHealth = health - (this.attack/3);
+        int newHealth = health - (this.attack/4); //1/4 the damage because blocking still sucked
         target.setHealthPoints(newHealth);
-        // Added an attack that blocks some damage. This is the only new thing that I added here.
     }
 
     public void castSpell(Character target) {
