@@ -11,6 +11,9 @@ public class Main {
 //        Character enemy = new Character("enemy", 10, 10, null);
 //        playerCharacter.attack(enemy);
 //        enemy.attack(playerCharacter);
-        Encounter.TestEncounter();
+//        Encounter.Gargoyle();
+        //try this one
+        //Encounter.Jehovah():
+        //or even this one!!
     }
 }
