@@ -2,7 +2,7 @@ If you have ideas for encounters put them here
 
 One where a cultist dude asks if you want to learn about Cthulu. If you say no he gets mad and fights but if you says yes you just lose some hp.
 
-//This an encounter where users select a path and are punished if they choose wrong. 😊
+//This an encounter where users select a path and are punished if they choose wrong. I ran it to see, and the only errors I got were the unrecognized variables/calls. 😊
 public static void fauxLight() {
 	    Character player = Main.playerCharacter;
 	    Scanner movement = new Scanner(System.in);
