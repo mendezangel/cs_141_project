@@ -1,3 +1,35 @@
 If you have ideas for encounters put them here
 
 One where a cultist dude asks if you want to learn about Cthulu. If you say no he gets mad and fights but if you says yes you just lose some hp.
+
+//This an encounter where users select a path and are punished if they choose wrong. 😊
+public static void fauxLight() {
+	    Character player = Main.playerCharacter;
+	    Scanner movement = new Scanner(System.in);
+	    System.out.println("As you traversed the buildings around you became warped, creaking," +
+	    "as if they were crying out. The tavern to" + player.getName + "'s right" +
+	    "was illuminated by a hopeful light, streaming through the space where a car had" +
+	    "tunneled through it. Then again, our Survivor was sure they were heading" +
+	    "the right direction.");
+	    System.out.print("Should" + player.getName + "go (right) or (continue)?" +
+	    ">");
+	    boolean decision = false;
+	    while (decision == false) {
+	        String input = movement.nextLine();
+	        if (Objects.equals(input, "right")) {
+	            System.out.print(player.getName + " moves towards the tavern" +
+	            "but as their hand passes through a ray of the hopeful light they are met with a"
+	            + " searing pain. Clutching their arm, they continue through the streets...")
+	            player.setHealthPoints(player.getHealthPoints - 5); //I have no concept of our damage scaling. :\
+	            decision = true;
+	        } else if (Objects.equals(input, "continue")) {
+	            System.out.print(player.getName + " continues ahead, and spares a glance behind them." +
+	            "The light through the tavern is gone.");
+	            decision = true; 
+	        } else {
+	            System.out.println("In their rumination, " + player.getName + " failed to notice the light growing brighter" +
+	            "A pain scorches the side of their face, forcing them away. The light dissapears.");
+	            player.setHealthpoints(player.getHealthpoints - 7);
+	            decision = true;
+	        }
+	    }
