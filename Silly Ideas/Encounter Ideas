@@ -7,29 +7,29 @@ public static void fauxLight() {
 	    Character player = Main.playerCharacter;
 	    Scanner movement = new Scanner(System.in);
 	    System.out.println("As our Survior traversed the buildings around them became warped, creaking," +
-	    "as if they were crying out. The tavern to" + player.getName + "'s right" +
+	    "as if they were crying out. The tavern to" + player.getName() + "'s right" +
 	    "was illuminated by a hopeful light, streaming through the space where a car had" +
 	    "tunneled through it. Then again, our Survivor was sure they were heading" +
 	    "the right direction.");
-	    System.out.print("Should" + player.getName + "go (right) or (continue)?" +
+	    System.out.print("Should" + player.getName() + "go (right) or (continue)?" +
 	    ">");
 	    boolean decision = false;
 	    while (decision == false) {
 	        String input = movement.nextLine();
 	        if (Objects.equals(input, "right")) {
-	            System.out.println(player.getName + " moves towards the tavern" +
+	            System.out.println(player.getName() + " moves towards the tavern" +
 	            "but as their hand passes through a ray of the hopeful light they are met with a"
 	            + " searing pain. Clutching their arm, they continue through the streets...")
-	            player.setHealthPoints(player.getHealthPoints - 5); //I have no concept of our damage scaling. :\
+	            player.setHealthPoints(player.getHealthPoints() - 5); //I have no concept of our damage scaling. :\
 	            decision = true;
 	        } else if (Objects.equals(input, "continue")) {
-	            System.out.println(player.getName + " continues ahead, and spares a glance behind them." +
+	            System.out.println(player.getName() + " continues ahead, and spares a glance behind them." +
 	            "The light through the tavern is gone.");
 	            decision = true; 
 	        } else {
-	            System.out.println("In their rumination, " + player.getName + " failed to notice the light growing brighter" +
+	            System.out.println("In their rumination, " + player.getName() + " failed to notice the light growing brighter" +
 	            "A pain scorches the side of their face, forcing them away. The light dissapears.");
-	            player.setHealthpoints(player.getHealthpoints - 7);
+	            player.setHealthpoints(player.getHealthpoints() - 7);
 	            decision = true;
 	        }
 	    }
