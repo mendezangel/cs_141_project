@@ -13,7 +13,7 @@ public class Main {
 //        enemy.attack(playerCharacter);
 //        Encounter.Gargoyle();
         //try this one
-        //Encounter.Jehovah():
+        //Encounter.Jehovah();
         //or even this one!!
     }
 }
