@@ -67,12 +67,52 @@ public class Encounter {
         Battle(enemy);
     }
 
+    public static void Voices() {
+        Character player = Main.playerCharacter;
+        Character enemy = new Character("Eldritch Spectre", 1, 12, "Ghost" );
+        Scanner s = new Scanner(System.in);
+        boolean spookyghost = true;
+        System.out.println("As " + player.getName() + " walks along a disheveled path darkness suddenly envelops them.");
+               System.out.println("Echoes shouting curses of impending doom in the voices of loved ones and some mirroring their own.");
+        System.out.println("What can be done to fight back the intangible voices?");
+        while(spookyghost) {
+            System.out.println("||(L)ash out into the darkness||");
+            System.out.println("||(C)all out to the voices||");
+            System.out.println("||(P)ray for safety||");
+            String input = s.nextLine();
+            if (Objects.equals(input, "l")) {
+System.out.println(player.getName() + " wildly strikes into the darkness only to be left with a wound opposite to where " +
+        "they had swung.");
+player.setHealthPoints(player.getHealthPoints() - 12);
+            } else if (Objects.equals(input, "c")) {
+System.out.println("As " + player.getName() + " reaches out for help they can hear voices snickering and mocking them.");
+player.setHealthPoints(player.getHealthPoints() - 2);
+            } else if (Objects.equals(input, "p")) {
+System.out.println(player.getName() + " prays for safety.");
+System.out.println("The voices silence themselves and the darkness weakens, revealing nearby pavement and debris.");
+System.out.println("A ghostly figure, seemingly injured due to the prayer reveals itself.");
+System.out.println("While not defenseless it can still be injured via prayer.");
+          Battle(enemy);
+          spookyghost = false;
+            }else {
+                System.out.println(player.getName() + "'s voice calls out, \"You are confused and alone. This void " +
+                        "will be your grave\"");
+                System.out.println(player.getName() + " can feel their mind liquefying");
+                player.setHealthPoints(player.getHealthPoints() - 2);
+            }
+            }
+        }
+
+
+
     public static void Battle(Character enemy) {
         //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
         boolean turnTimer = true;
         boolean battle = true;
         boolean block = false;
         boolean deathmode = false; //this is for one enemy type but idk where else to put it
+        int ghostmeter = 0;
+        if (enemy.getEnemyType() == "Ghost") {ghostmeter = 3; } //same here but this one is worse
         Character player = Main.playerCharacter;
 
 
@@ -93,30 +133,55 @@ public class Encounter {
 
                 switch (input) {
                     case "a":
-                        player.attack(enemy);
-                        System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
-                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
+                        if (ghostmeter > 0) {
+                        System.out.println(player.getName() + " fires at the figure, but the apparition " +
+                                "doesn't even flicker.");
                         turnTimer = false;
                         break;
-                    case "b":
-                        block = true;
-                        System.out.println(player.getName() + " braces and prays for resilience");
-                        turnTimer = false;
-                        break;
-                    case "f":
-                        player.setHealthPoints(player.getHealthPoints() - 5);
-                        System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
-                                " leaves their mind vulnerable.");
-                        System.out.println(player.getHealthPoints());
-                        battle = false;
-                        break label;
-                    default:
-                        System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
-                        player.setHealthPoints(player.getHealthPoints() - 1);
-                        //don't take this one too seriously I just thought it was funny
+                        }
+                            player.attack(enemy);
+                            System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
+                                    + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
+                            turnTimer = false;
+                            break;
+                            case "b":
+                                if (ghostmeter > 0 ) {
+                                    block = true;
+                                    System.out.println(player.getName() + " braces and prays for resilience");
+                                    System.out.println("The figure seizes and shrieks as the darkness is pushed further away");
+                                    ghostmeter -= 1;
+                                    if (ghostmeter == 0) {
+                                        System.out.println("The figure reveals it's corporeal form, a twisting mass of" +
+                                                " flesh and vines warped into a humanoid figure. it is now vulnerable ");
+                                    }
+                                    turnTimer = false;
+                                    break;
+                                }
+                                block = true;
+                                System.out.println(player.getName() + " braces and prays for resilience");
+                                turnTimer = false;
+                                break;
+                            case "f":
+                                if (ghostmeter > 0) {
+                                    System.out.println(player.getName() + " cannot find a direction to move to. They " +
+                                            "are trapped");
+                                    break label;
+                                }
+                                player.setHealthPoints(player.getHealthPoints() - 5);
+                                System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
+                                        " leaves their mind vulnerable.");
+                                System.out.println(player.getHealthPoints());
+                                battle = false;
+                                break label;
+                            default:
+                                System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
+                                player.setHealthPoints(player.getHealthPoints() - 1);
+                                //don't take this one too seriously I just thought it was funny
+                                break;
+                        }
                         break;
                 }
-            }
+
             if (Objects.equals(enemy.getEnemyType(), "basic")) {
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
@@ -124,7 +189,7 @@ public class Encounter {
                         battle = false;
                         break;
                     }
-                    if (!block) {
+                    if (block == false) {
                         enemy.attack(player);
                         System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
                                 enemy.getAttack() + " damage! " + player.getName() + " has " + player.getHealthPoints()
@@ -150,7 +215,7 @@ public class Encounter {
 
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
-                        System.out.println("The " + enemy.getName() + " has been slain.");
+                        System.out.println("The " + enemy.getName() + " completely stops moving.");
                         battle = false;
                         break;
                     }
@@ -189,8 +254,33 @@ public class Encounter {
 
                 }
             }
+            if (enemy.getEnemyType() == "Ghost") {
+                while (!turnTimer) {
+                    if (enemy.getHealthPoints() <= 0) {
+                        System.out.println("The " + enemy.getName() + " vanishes with a flash of light.");
+                        battle = false;
+                        break;
+                    }
+                    if (block == false) {
+                        enemy.attack(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                enemy.getAttack() + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
+                        turnTimer = true;
+                    } else {
+                        enemy.attackButBlock(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
+                        block = false;
+                        turnTimer = true;
+                    }
+
+                }
+            }
+            }
         }
-    }
+
     private static void randGarg () { //this is just for conciseness
         Random rand = new Random();
         int randy = rand.nextInt(1, 3);
@@ -203,5 +293,6 @@ public class Encounter {
         }
     }
 }
+
 
 
