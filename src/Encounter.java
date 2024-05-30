@@ -32,17 +32,17 @@ public class Encounter {
         Character player = Main.playerCharacter; //probably not good but it's for testing
         Character enemy = new Character("Cultist", 15, 4, "basic");
         Scanner s = new Scanner(System.in);
-        System.out.println("A group of people dressed in pine colored robes approach you." +
-                " The oldest one comes closest and asks");
+        System.out.println("A group of people dressed in pine colored robes approach " + player.getName() +
+                ". The oldest one comes closest and asks");
         //pause if possible
-        System.out.println("Do you have a minute to talk about our lord and saviour Cthulu?");
+        System.out.println("Do you have a minute to talk about our lord and saviour Cthulhu?");
         boolean talking = false;
-        while (talking == false) {
+        while (!talking) {
             String input = s.nextLine();
             if (Objects.equals(input, "yes")) {
                 System.out.println("Wonderful");
-                System.out.println("As the elder cultist prattles on about how mighty he can make you" +
-                        ", you can feel your mind weakening and yearning for power");
+                System.out.println("As the elder cultist prattles on about how mighty it can make people" +
+                        ", " + player.getName() + " feels their mind weakening and yearning for power");
                 player.setHealthPoints(player.getHealthPoints() - 15);
                 talking = true;
             } else if (Objects.equals(input, "no") || Objects.equals(input, "nope")) { //don't ask idek
@@ -58,11 +58,12 @@ public class Encounter {
     }
 
     public static void Gargoyle() {
+        Character player = Main.playerCharacter;
         Character enemy = new Character("Gargoyle", 25, 2, "Garg");
-        System.out.println("As you wander around ruins you seem to notice a statue slowly rising and" +
+        System.out.println("As " + player.getName() + " wanders around ruins they seem to notice a statue slowly rising and" +
                 " falling almost as if it were breathing");
         System.out.println("Almost without warning it turns its beastly head with an accompanying stone" +
-                " grating. With it's target now located it lurches toward you.");
+                " grating. With it's target now located it lurches toward " + player.getName() + "!");
         Battle(enemy);
     }
 
@@ -75,7 +76,7 @@ public class Encounter {
         Character player = Main.playerCharacter;
 
 
-        System.out.println("It appears you have been attacked by a " + enemy.getName() + "!");
+        System.out.println("It appears " + player.getName() + " has been attacked by a " + enemy.getName() + "!");
         Scanner scanCool = new Scanner(System.in);
 
         while (battle) {
@@ -93,23 +94,24 @@ public class Encounter {
                 switch (input) {
                     case "a":
                         player.attack(enemy);
-                        System.out.println("You blast the " + enemy.getName() + " for " + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
-                        //100% the line above will not be kept. I'm just using it to see whats working. i would prefer grpahics or atleast some less basic text
+                        System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
+                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
                         turnTimer = false;
                         break;
                     case "b":
                         block = true;
-                        System.out.println(" You brace and pray for resilience");
+                        System.out.println(player.getName() + " braces and prays for resilience");
                         turnTimer = false;
                         break;
                     case "f":
                         player.setHealthPoints(player.getHealthPoints() - 5);
-                        System.out.println("You successfully escape, but your cowardly behaviour leaves your mind vulnerable.");
+                        System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
+                                " leaves their mind vulnerable.");
                         System.out.println(player.getHealthPoints());
                         battle = false;
                         break label;
                     default:
-                        System.out.println("Your mind races and you fail to comprehend your surroundings");
+                        System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
                         player.setHealthPoints(player.getHealthPoints() - 1);
                         //don't take this one too seriously I just thought it was funny
                         break;
@@ -124,12 +126,15 @@ public class Encounter {
                     }
                     if (!block) {
                         enemy.attack(player);
-                        System.out.println("The " + enemy.getName() + " strikes you dealing " + enemy.getAttack() + " damage! You have " + player.getHealthPoints() + " health.");
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                enemy.getAttack() + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
                         turnTimer = true;
                     } else {
-                        enemy.attackButBlock(player); //I decided to third the attack to make it more rewarding to use block correctly
-                        System.out.println("The " + enemy.getName() + " strikes you dealing " + (enemy.getAttack() / 3) + " damage! You have " + player.getHealthPoints() + " health.");
-                        //the "(enemyATK/3)" and all other statements will have to be changed if we add randomness to damage
+                        enemy.attackButBlock(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
                         block = false;
                         turnTimer = true;
                     }
@@ -151,7 +156,9 @@ public class Encounter {
                     }
                     if (!block) {
                         enemy.attack(player);
-                        System.out.println("The " + enemy.getName() + " strikes you dealing " + enemy.getAttack() + " damage! You have " + player.getHealthPoints() + " health.");
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                enemy.getAttack() + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
                         turnTimer = true;
                         if (deathmode == false) {
                             enemy.setAttack(enemy.getAttack() * 3);
@@ -164,7 +171,9 @@ public class Encounter {
                         }
                     } else {
                         enemy.attackButBlock(player);
-                        System.out.println("The " + enemy.getName() + " strikes you dealing " + (enemy.getAttack() / 3) + " damage! You have " + player.getHealthPoints() + " health.");
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
                         block = false;
                         turnTimer = true;
                         if (deathmode == false) {
