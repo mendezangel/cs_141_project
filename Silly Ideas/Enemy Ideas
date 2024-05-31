@@ -7,7 +7,7 @@ dude where every ~3 attacks does a mega attack that has a warning
 Was thinking of a dude who could parry, like it says they brace/ enter a form but we would need an extra action that isn't attacking or blocking so the player could capitalize on the free oppurtunity. But maybe not idk. Maybe just not getting hit for a lot is a reward in itself.
 
 //PAIRS UP WITH MY Rats METHOD
-if (Objects.equals(enemy.getEnemyType(), "Rodent")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
+if (Objects.equals(enemy.getEnemyType(), "Rodent")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING THIS LINE WILL NEED TO BE INDENTED.
                 Random rats = new Random();
                 while (!turnTimer) {
                     int bites = rats.nextInt(2, 11); //Every turn, a random number of rats with limit, attack the player.
