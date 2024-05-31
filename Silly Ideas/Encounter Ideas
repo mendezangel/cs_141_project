@@ -91,3 +91,4 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
         	"were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
         	player.setHealthpoints(player.getHealthpoints() + 7);
 	}
+
