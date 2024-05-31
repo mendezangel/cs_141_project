@@ -2,7 +2,7 @@ If you have ideas for encounters put them here
 
 One where a cultist dude asks if you want to learn about Cthulu. If you say no he gets mad and fights but if you says yes you just lose some hp.
 
-//This an encounter where users select a path and are punished if they choose wrong. I ran it to see, and the only errors I got were the unrecognized variables/calls. 😊
+//This an encounter where users select a path and are punished if they choose wrong. 
 	public static void fauxLight() { //player makes a pathing decision, and is punished for it.
 		Character player = Main.playerCharacter;
 		Scanner movement = new Scanner(System.in);
@@ -35,7 +35,7 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
 		}
 	}
 
-	public static void Rats() { //umique battle that should be able to be fled from
+	public static void Rats() { //umique battle that should not be able to be fled from
 		Character player = Main.playerCharacter;
 		Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
 		System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
@@ -44,8 +44,7 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
 		Battle(enemy);
 	}
 
-//heals you if you choose correctly!
-	public static void guidingLight() {
+	public static void guidingLight() { //provides a major heal if you choose correctly. 
 		Character player = Main.playerCharacter;
 		Scanner movement = new Scanner(System.in);
 		System.out.println(player.getName() + " made their way into an alley as the street had become clouded with a" +
@@ -69,4 +68,26 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
 	            		decision = true;
 	        	}
 	    	}
+	}
+
+	public static void fireDumpster() { //provides a minor heal
+        	Character player = Main.playerCharacter;
+        	System.out.print("The challenging landscape leveled out upon entrance to a parking lot." +
+        	"A metal dumpster lit ablaze indicated other Survivors had made their way through. The thought grounded " + player.getName + ".");
+        	player.setHealthpoints(player.getHealthpoints() + 3);
+	}
+    
+	public static void energyBar() { //provides a medium heal
+        	Character player = Main.playerCharacter;
+        	System.out.print(player.getName + " stops at a crumbling grocery mart to scavenge for supplies. Most of it was picked clean" +
+        	" but they managed to find an energy bar forgotten at a check-out stand.");
+        	player.setHealthpoints(player.getHealthpoints() + 5); 
+	}
+    
+	public static void firstaidPack() { //provides a large heal
+		Character player = Main.playerCharacter
+        	System.out.print("To see a child care center in such a state brought a deep sadness over " + player.getName + "." +
+        	" They entered into the kitchen, and the scene indicated a struggle had occured. A basic first aid pack's contents" +
+        	"were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
+        	player.setHealthpoints(player.getHealthpoints() + 7);
 	}
