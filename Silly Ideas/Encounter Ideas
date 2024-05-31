@@ -4,42 +4,69 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
 
 //This an encounter where users select a path and are punished if they choose wrong. I ran it to see, and the only errors I got were the unrecognized variables/calls. 😊
 	public static void fauxLight() { //player makes a pathing decision, and is punished for it.
-	    Character player = Main.playerCharacter;
-	    Scanner movement = new Scanner(System.in);
-	    System.out.println("As you traversed the buildings around you became warped, creaking," +
-	    "as if they were crying out. The tavern to" + player.getName() + "'s right" +
-	    "was illuminated by a hopeful light, streaming through the space where a car had" +
-	    "tunneled through it. Then again, our Survivor was sure they were heading" +
-	    "the right direction.");
-	    System.out.print("Should" + player.getName() + "go (right) or (continue)?" +
-	    ">");
-	    boolean decision = false;
-	    while (decision == false) {
-	        String input = movement.nextLine();
-	        if (Objects.equals(input, "right")) {
-	            System.out.print(player.getName() + " moves towards the tavern" +
-	            "but as their hand passes through a ray of the hopeful light they are met with a"
-	            + " searing pain. Clutching their arm, they continue through the streets...");
-	            player.setHealthPoints(player.getHealthPoints() - 5); //I have no concept of our damage scaling. :\
-	            decision = true;
-	        } else if (Objects.equals(input, "continue")) {
-	            System.out.print(player.getName() + " continues ahead, and spares a glance behind themself." +
-	            "The light through the tavern is gone.");
-	            decision = true; 
-	        } else {
-	            System.out.println("In their rumination, " + player.getName() + " failed to notice the light growing brighter" +
-	            "A pain scorches the side of their face, forcing them away. The light dissapears.");
-	            player.setHealthpoints(player.getHealthpoints() - 7);
-	            decision = true;
-	        }
-	    }
+		Character player = Main.playerCharacter;
+		Scanner movement = new Scanner(System.in);
+		System.out.println("As you traversed the buildings around you became warped, creaking," +
+		"as if they were crying out. The tavern to" + player.getName() + "'s right" +
+		"was illuminated by a hopeful light, streaming through the space where a car had" +
+		"tunneled through it. Then again, our Survivor was sure they were heading" +
+		"the right direction.");
+		System.out.print("Should" + player.getName() + "go (right) or (continue)?" +
+		">");
+		boolean decision = false;
+		while (decision == false) {
+			String input = movement.nextLine();
+			if (Objects.equals(input, "right")) {
+	        		System.out.println(player.getName() + " moves towards the tavern" +
+	        		"but as their hand passes through a ray of the hopeful light they are met with a"
+	        		+ " searing pain. Clutching their arm, they continue through the streets...");
+	        		player.setHealthPoints(player.getHealthPoints() - 5); //I have no concept of our damage scaling. :\
+	        		decision = true;
+	        	} else if (Objects.equals(input, "continue")) {
+	            		System.out.println(player.getName() + " continues ahead, and spares a glance behind themself." +
+	            		"The light through the tavern is gone.");
+	            		decision = true; 
+	        	} else {
+	            		System.out.println("In their rumination, " + player.getName() + " failed to notice the light growing brighter" +
+	            		"A pain scorches the side of their face, forcing them away. The light dissapears.");
+	            		player.setHealthpoints(player.getHealthpoints() - 7);
+	            		decision = true;
+	        	}
+		}
 	}
 
 	public static void Rats() { //umique battle that should be able to be fled from
-	    Character player = Main.playerCharacter;
-	    Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
-	    System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
-	    "something billowing out of the city drains." + player.getName() + " runs instictually but the swarm swiftly" +
-	    " meets their heels.");
-	    Battle(enemy);
+		Character player = Main.playerCharacter;
+		Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
+		System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
+		"something billowing out of the city drains." + player.getName() + " runs instictually but the swarm swiftly" +
+		" meets their heels.");
+		Battle(enemy);
+	}
+
+//heals you if you choose correctly!
+	public static void guidingLight() {
+		Character player = Main.playerCharacter;
+		Scanner movement = new Scanner(System.in);
+		System.out.println(player.getName() + " made their way into an alley as the street had become clouded with a" +
+		" supernatural haze. Before they managed to reach the outlet, our Survivor realized their shadow was now" + 
+		" cast in front of them. They turned around to see a blue light beaming from their entry more luminous than anything encountered...");
+		System.out.print("Should" + player.getName() + "go (forward) or (turn back)?" +
+		">");
+		boolean decision = false;
+		while (decision == false) {
+			String input = movement.nextLine();
+			if (Objects.equals(input, "forward")) {
+				System.out.println(player.getName() + " moves away from the light, returning to the street.");
+				decision = true;
+	        	} else if (Objects.equals(input, "turn back")) {
+	            		System.out.println(player.getName() + " approaches the light, a coolness washes over them. As if they " +
+	            		" had recieved a deep massage or had exited an ice cold shower.");
+	            		player.setHealthpoints(player.getHealthpoints() + 7);
+	            		decision = true; 
+	        	} else {
+	            		System.out.println("In their indesiciveness, " + player.getName() + " the light faded. Leaving them to continue on alone...");
+	            		decision = true;
+	        	}
+	    	}
 	}
