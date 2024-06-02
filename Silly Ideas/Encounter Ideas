@@ -34,11 +34,6 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
 	    }
 	}
 	
-	
-	
-	
-	
-	
 	public static void Rats() { //umique battle that should be able to be fled from
 	    Character player = Main.playerCharacter;
 	    Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
@@ -129,32 +124,15 @@ One where a cultist dude asks if you want to learn about Cthulu. If you say no h
         " transparent and aqua. Not particularly fast, it looked oddly appetizing.");
         battle(enemy);
     }
-    
-     if (Objects.equals(enemy.getEnemyType(), "Jelly")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
-                while (!turnTimer) {
-                    if (enemy.getHealthPoints() <= 0) {
-                        player.setHealthpoints(player.getHealthPoints + 10);
-                        System.out.println("Attacking the Jelly only seemed to make a mess. A soothing mess!" +
-                            player.getName() + " has been healed by 10 Health Points leaving them with " + player.getHealthpoints +
-                            "The Jelly begins to scale the side of the building, back to the safety of the roof.");
-                        battle = false;
-                        break;
-                    }
-                    if (!block) {
-                        player.setHealthPoints(player.getHealthPoints + 3)
-                        System.out.println("The Jelly spritzes " + player.getName() + " with refreshing mist!");
-                        System.out.println(player.getName + " has " + player.getHealthPoints() + " health!");
-                        turnTimer = true;
-                    } else {
-                        System.out.println("The Jelly wiggles playfully!");
-                        block = false;
-                        turnTimer = true;
-                    }
-                }
-            }
-            
-    
-    
+
+   public static void livingOoze2() {
+        Character player = Main.playerCharacter;
+        Character enemy = new Character("Living Ooze", 15, 4, "basic");
+        System.out.println(player.getName() + " was haulted underneath an overpass. A familiar foe" +
+        "dropped down from the road above in a gooey mess. This time, animal parts and clothing were visible in the mixture."); 
+        battle(enemy);
+    }
+
     //SHOULD BE THE TUTORIAL ENCOUNTER
     public static void livingOoze() {
 		Character player = Main.playerCharacter; 
