@@ -2,146 +2,214 @@ If you have ideas for encounters put them here
 
 One where a cultist dude asks if you want to learn about Cthulu. If you say no he gets mad and fights but if you says yes you just lose some hp.
 
-	public static void fauxLight() { //player makes a pathing decision, and is punished for it.
-	    Character player = Main.playerCharacter;
-	    Scanner movement = new Scanner(System.in);
-	    System.out.println("As you traversed the buildings around you became warped, creaking," +
-	    "as if they were crying out. The tavern to" + player.getName() + "'s right" +
-	    "was illuminated by a hopeful light, streaming through the space where a car had" +
-	    "tunneled through it. Then again, our Survivor was sure they were heading" +
-	    "the right direction.");
-	    System.out.print("Should" + player.getName() + "go (right) or (continue)?" +
-	    ">");
-	    boolean decision = false;
-	    while (decision == false) {
-	        String input = movement.nextLine();
-	        if (Objects.equals(input, "right")) {
-	            System.out.print(player.getName() + " moves towards the tavern" +
-	            "but as their hand passes through a ray of the hopeful light they are met with a" +
-	            " searing pain. Clutching their arm, they continue through the streets...");
-	            player.setHealthPoints(player.getHealthPoints() - 5); //I have no concept of our damage scaling. :\
-	            decision = true;
-	        } else if (Objects.equals(input, "continue")) {
-	            System.out.print(player.getName() + " continues ahead, and spares a glance behind themself." +
-	            "The light through the tavern is gone.");
-	            decision = true; 
-	        } else {
-	            System.out.println("In their rumination, " + player.getName() + " failed to notice the light growing brighter" +
-	            "A pain scorches the side of their face, forcing them away. The light dissapears.");
-	            player.setHealthPoints(player.getHealthPoints() - 7);
-	            decision = true;
-	        }
-	    }
+
+	//player makes a pathing decision, and can be moderately punished if they choose wrong. 
+	public static void fauxLight() { 
+	    	Character player = Main.playerCharacter;
+	    	Scanner movement = new Scanner(System.in);
+	    	System.out.println("As our Survivor traversed the buildings around them became warped, creaking," +
+	    	"as if they were crying out. The tavern to" + player.getName() + "'s right" +
+		"was illuminated by a hopeful light, streaming through the space where a car had" +
+		"tunneled through it. Then again, our Survivor was sure they were heading" +
+		"the right direction.");
+		System.out.print("Should" + player.getName() + "go (right) or (continue)?" +
+		">");
+	    	boolean decision = false;
+	    	while (decision == false) {
+	        	String input = movement.nextLine();
+	        	if (Objects.equals(input, "right")) {
+	        		System.out.print(player.getName() + " moves towards the tavern" +
+	        		"but as their hand passes through a ray of the hopeful light they are met with a"
+	        		+ " searing pain. Clutching their arm, they continue through the streets...");
+	        		player.setHealthPoints(player.getHealthPoints() - 5);
+	        		System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+	        		decision = true;
+	        	} else if (Objects.equals(input, "continue")) {
+	            		System.out.print(player.getName() + " continues ahead, and spares a glance behind themself." +
+	            		"The light through the tavern is gone.");
+	            		decision = true; 
+	        	} else {
+	            		System.out.println("In their rumination, " + player.getName() + " failed to notice the light growing brighter" +
+	            		"A pain scorches the side of their face, forcing them away. The light dissapears.");
+	            		player.setHealthPoints(player.getHealthPoints() - 7);
+	            		System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+	            		decision = true;
+	        	}
+	    	}
 	}
-	
-	public static void Rats() { //umique battle that should be able to be fled from
-	    Character player = Main.playerCharacter;
-	    Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
-	    System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
-	    "something billowing out of the city drains." + player.getName() + " runs instictually but the swarm swiftly" +
-	    " meets their heels.");
-	    Battle(enemy); 
+
+	//This or that. If the player choose wrong, they could take serious damage. 
+	public static void buildingCrumbling() { //player makes a pathing decision, and is punished for it.
+		Character player = Main.playerCharacter;
+		Scanner movement = new Scanner(System.in);
+		System.out.println("Slipping into a nearby printshop " + player.getName() + " quickly" +
+		" realizes their grave error. The floor buckled underneath them, and they began to run." +
+		" They moved through building, and came to a stairwell. The basement of the building was flooded, " +
+		" however " + player.getName() + " knew they could potentially swim out. They could also take their " +
+	    	" chances ascending to the roof. But the building could collapse beneath them. They were stalled with alarm.");
+	    	System.out.print("Should" + player.getName() + " (ascend) or (descend)?" +
+	    	">");
+	    	boolean decision = false;
+	    	while (decision == false) {
+	        	String input = movement.nextLine();
+	        	if (Objects.equals(input, "ascend")) {
+	            		System.out.print(player.getName() + " frantically climbed the stairs, forcing their" +
+	            		" way through the fire escape at the top. The building swayed underneath them, they could fall " +
+	            		" to their death. This confrontation pushed them to leap to a nearby buildings roof. Where they collapsed" +
+		    		" from exhaustion...");
+	            		decision = true;
+	        	} else if (Objects.equals(input, "descend")) {
+	            		System.out.print(player.getName() + " dives into the water, hoping the building doesn't cave" +
+	            		"on top of them. The darkness of the basement didn't seem to be broken up by anything, and "
+	            		" our Survivor realized they had to return to the stairwell and climb to the roof." +
+	            		player.getName() + " frantically climbed the stairs but a piece of rubble above fell" +
+	            		" incapaciting them briefly. In a dazed manner, they make their way to the roof and make the" +
+	            		" perilous leap to a nearby building before collapsing from exhaustion...");
+	            		player.setHealthPoints(player.getHealthPoints() - 12); 
+	            		System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+	            		decision = true; 
+	        	} else {
+	            		System.out.println(player.getName() + "remained still as to not disturb the environment. They " +
+	            		"knew they had limited time... This decision was pivotle.");
+	            		System.out.print("Should" + player.getName() + " (ascend) or (descend)?" +
+	            		">");
+	        	}
+	    	}
+	}
+
+	//If the player makes the correct decision they are Rewarded with a Heal!
+	public static void guidingLight() {
+        	Character player = Main.playerCharacter;
+	    	Scanner movement = new Scanner(System.in);
+	    	System.out.println(player.getName() + " made their way into an alley as the street had become clouded with a" +
+	    	" supernatural haze. Before they managed to reach the outlet, our Survivor realized their shadow was now" + 
+	    	" cast in front of them. They turned around to see a blue light beaming from their entry more luminous than anything encountered...");
+	    	System.out.print("Should" + player.getName() + "go (forward) or (turn back)?" +
+	    	">");
+	    	boolean decision = false;
+	    	while (decision == false) {
+	        	String input = movement.nextLine();
+	        	if (Objects.equals(input, "forward")) {
+	        		System.out.print(player.getName() + " moves away from the light, returning to the street.");
+	        		decision = true;
+	        	} else if (Objects.equals(input, "turn back")) {
+	            		System.out.print(player.getName() + " approaches the light, a coolness washes over them. As if they " +
+	            		" had recieved a deep massage or had exited an ice cold shower.");
+	            		player.setHealthPoints(player.getHealthPoints() + 10);
+	            		System.out.println(player.getName() + " has " + player.getHealthPoints() " health!");
+	            		decision = true; 
+	        	} else {
+	        		System.out.println("In their indesiciveness, " + player.getName() + " the light faded. Leaving them to continue on alone...");
+	            		decision = true;
+			}
+		}
+	}
+
+	//Not an endgame Boss Encounter. But should be fed through that Method, so that it cannot be fled from. In other words
+	//the Battle() method, should have a variant called BossBattle() which cannot be ran from
+	public static void Rats() { 
+		Character player = Main.playerCharacter;
+		Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
+		System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
+		"something billowing out of the city drains." + player.getName() + " runs instictually but the swarm swiftly" +
+		" meets their heels.");
+		Battle(enemy); 
         }
-            
-    public static void guidingLight() {
-        Character player = Main.playerCharacter;
-	    Scanner movement = new Scanner(System.in);
-	    System.out.println(player.getName() + " made their way into an alley as the street had become clouded with a" +
-	    " supernatural haze. Before they managed to reach the outlet, our Survivor realized their shadow was now" + 
-	    " cast in front of them. They turned around to see a blue light beaming from their entry more luminous than anything encountered...");
-	    System.out.print("Should" + player.getName() + "go (forward) or (turn back)?" +
-	    ">");
-	    boolean decision = false;
-	    while (decision == false) {
-	        String input = movement.nextLine();
-	        if (Objects.equals(input, "forward")) {
-	            System.out.print(player.getName() + " moves away from the light, returning to the street.");
-	            decision = true;
-	        } else if (Objects.equals(input, "turn back")) {
-	            System.out.print(player.getName() + " approaches the light, a coolness washes over them. As if they " +
-	            " had recieved a deep massage or had exited an ice cold shower.");
-	            player.setHealthPoints(player.getHealthPoints() + 10);
-	            System.out.print(player.getName + " has " + player.getHealthPoints " health!");
-	            decision = true; 
-	        } else {
-	            System.out.println("In their indesiciveness, " + player.getName() + " the light faded. Leaving them to continue on alone...");
-	            decision = true;
-	        }
-	    }
+
+    //Next 3 encounters are healing encounters! 
+	public static void fireDumpster() {
+		Character player = Main.playerCharacter;
+		System.out.print("The challenging landscape leveled out upon entrance to a parking lot." +
+		"A metal dumpster lit ablaze indicated other Survivors had made their way through. The thought grounded " + player.getName() + ".");
+		player.setHealthpPoints(player.getHealthPoints() + 3);
+		System.out.println(player.getName() + " has " + player.getHealthPoints() " health!");
 	}
     
-    public static void fireDumpster() {
-        Character player = Main.playerCharacter;
-        System.out.print("The challenging landscape leveled out upon entrance to a parking lot." +
-        "A metal dumpster lit ablaze indicated other Survivors had made their way through. The thought grounded " + player.getName() + ".");
-        player.setHealthpPoints(player.getHealthPoints() + 3);
-        System.out.print(player.getName + " has " + player.getHealthPoints " health!");
-    }
+	public static void energyBar() {
+		Character player = Main.playerCharacter;
+		System.out.print(player.getName() + " stops at a crumbling grocery mart to scavenge for supplies. Most of it was picked clean" +
+		" but they managed to find an energy bar forgotten at a check-out stand.");
+		player.setHealthPoints(player.getHealthPoints() + 5); 
+		System.out.println(player.getName() + " has " + player.getHealthPoints() " health!");
+    	}
     
-    public static void energyBar() {
-        Character player = Main.playerCharacter;
-        System.out.print(player.getName() + " stops at a crumbling grocery mart to scavenge for supplies. Most of it was picked clean" +
-        " but they managed to find an energy bar forgotten at a check-out stand.");
-        player.setHealthPoints(player.getHealthPoints() + 5); 
-        System.out.print(player.getName + " has " + player.getHealthPoints " health!");
-    }
-    
-    public static void firstaidPack() {
-        Character player = Main.playerCharacter
-        System.out.print("To see a child care center in such a state brought a deep sadness over " + player.getName() + "." +
-        " They entered into the kitchen, and the scene indicated a struggle had occured. A basic first aid pack's contents" +
-        "were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
-        player.setHealthPoints(player.getHealthPoints() + 7);
-        System.out.print(player.getName + " has " + player.getHealthPoints " health!");
-    }
-    
-    public static void theUndead() {
-        Character player = Main.playerCharacter;
-        Character enemy = new Character("Undead Women", 20, 6, "basic");
-        System.out.println("The door to a nearby townhome is forced open... A human figure " +
-        "stumbles through it. It seemed to be a resident. Her skin was pale, and peeling." +
-        player.getName + "questioned how she was even living. What seemed like pained groans were" +
-        "were nothing but gas escaping her system. She wasn't alive.");
-        battle(enemy);
-    }
-    
-    public static void theUndead2() {
-        Character player = Main.playerCharacter; 
-        Character enemy = new Character("Undead Man", 20, 6, "basic");
-        System.out.println(player.getName() + " knew the Fracture was a horrid phenomenon" +
-        "but the recent sights they had witnessed challenged their mental fortitude." +
-        " The man had endless hunger, and devoured only god knows with a ferocity unknown to" + player.getName() + "."
-        " The figure faced our Survivor, his skin was pale and flaking. The corpses eyes were piercing.");
-        battle(enemy);
-    }
-    
-    public static void rejuvinatingSlime() {
-        Character player = Main.playerCharacter;
-        Character enemy = new Character("Rejuvinating Jelly", 10, 0, "Jelly");
-        System.out.println(player.getName() + " leaned against a brick building as they collected themself." +
-        "The smoke anhilation from the dense smog was catching up to them. They looked up at the sky" +
-        " and saw a Gelatinous Liquid descending down the wall straight towards them. It was" +
-        " transparent and aqua. Not particularly fast, it looked oddly appetizing.");
-        battle(enemy);
-    }
+	public static void firstaidPack() {
+		Character player = Main.playerCharacter
+        	System.out.print("To see a child care center in such a state brought a deep sadness over " + player.getName() + "." +
+        	" They entered into the kitchen, and the scene indicated a struggle had occured. A basic first aid pack's contents" +
+        	"were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
+        	player.setHealthPoints(player.getHealthPoints() + 7);
+        	System.out.println(player.getName() + " has " + player.getHealthPoints() " health!");
+    	}
 
-   public static void livingOoze2() {
-        Character player = Main.playerCharacter;
-        Character enemy = new Character("Living Ooze", 15, 4, "basic");
-        System.out.println(player.getName() + " was haulted underneath an overpass. A familiar foe" +
-        "dropped down from the road above in a gooey mess. This time, animal parts and clothing were visible in the mixture."); 
-        battle(enemy);
-    }
+    //basic enemy
+    	public static void theUndead() {
+        	Character player = Main.playerCharacter;
+        	Character enemy = new Character("Undead Women", 20, 5, "basic");
+        	System.out.println("The door to a nearby townhome is forced open... A human figure " +
+        	"stumbles through it. It seemed to be a resident. Her skin was pale, and peeling." +
+        	player.getName() + "questioned how she was even living. What seemed like pained groans were" +
+        	"were nothing but gas escaping her system. She wasn't alive.");
+        	battle(enemy);
+    	}
 
+    //basic enemy
+    	public static void theUndead2() {
+        	Character player = Main.playerCharacter; 
+        	Character enemy = new Character("Undead Man", 20, 5, "basic");
+        	System.out.println(player.getName() + " knew the Fracture was a horrid phenomenon" +
+        	"but the recent sights they had witnessed challenged their mental fortitude." +
+        	" The man had endless hunger, and devoured only god knows with a ferocity unknown to" + player.getName() + "."
+        	" The figure faced our Survivor, his skin was pale and flaking. The corpses eyes were piercing.");
+        	battle(enemy);
+   	 }
+
+    //basic enemy 
+    	public static void livingOoze2() {
+        	Character player = Main.playerCharacter;
+        	Character enemy = new Character("Living Ooze", 15, 4, "basic");
+        	System.out.println(player.getName() + " was haulted underneath an overpass. A familiar foe" +
+        	"dropped down from the road above in a gooey mess. This time, animal parts and clothing were visible in the mixture."); 
+        	battle(enemy);
+    	}
+
+    //An encounter thats simple but maybe a little annoying!
+    	public static void angryMites() {
+        	Character player = Main.playerCharacter;
+       		Character enemy = new Character("Fracture Mite", 3, 3, "basic"); 
+        	System.out.println("This part of the city had been leveled. Nervously, our Survivor made their" +
+        	" way out of cover and across this concrete plain. All was quiet, until something nicked " + player.getName());
+        	player.setHealthPoints(player.getHealthPoints() - 3);
+        	System.out.println(player.getName() + " has " + player.getHealthPoints() " health!");
+        	System.out.println("The insectoid creature shook concrete dust off of itself.")
+        	battle(enemy); 
+        	System.out.println(player.getName() + " realized this entire plain could be full of these things." +
+        	" They began to carry on but were interrupted once again by-"); 
+        	battle(enemy); 
+        	System.out.println(player.getName() + " dashed back into wreckage. At least the decimated buildings provided cover...")
+    	}
+    
+    //An enemy that actually only heals you! How cute! TvT
+    	public static void rejuvinatingSlime() {
+        	Character player = Main.playerCharacter;
+        	Character enemy = new Character("Rejuvinating Jelly", 10, 0, "Jelly");
+        	System.out.println(player.getName() + " leaned against a brick building as they collected themself." +
+        	"The smoke anhilation from the dense smog was catching up to them. They looked up at the sky" +
+        	" and saw a Gelatinous Liquid descending down the wall straight towards them. It was" +
+        	" transparent and aqua. Not particularly fast, it looked oddly appetizing.");
+        	battle(enemy);
+    	}
+            
     //SHOULD BE THE TUTORIAL ENCOUNTER
-    public static void livingOoze() {
+	public static void livingOoze() {
 		Character player = Main.playerCharacter; 
 		Character enemy = new Character("Living Ooze", 10, 1, "basic");
 		System.out.println("As " + player.getName() + " lungs finally adjusted to the fumes in the air" +
 		" a gelatinous mass catches their attention. It had picked up pieces of debree like gravel, and" +
 		" was stained with oil. A shoe circulated through the ooze. These were the creatures the Fracture" +
-		had brought with it."); 
+		" had brought with it."); 
 		battle(enemy); 
 		System.out.println("Beings from forgotten realms cried out. Buildings crumbled. Wreckage around" +
 		" our Survivor shifted from damage and the creatures roaming inside them. Begrudingly," + player.getName() +
 		" moves onwards..." 
+}
