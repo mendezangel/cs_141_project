@@ -6,35 +6,51 @@ import java.util.Scanner;
 
 public class Encounter {
 
-//    public static void TestEncounter() {
-//        Character enemy = new Character("Foul Creature", 20, 4, "basic");
-//        Scanner pointless = new Scanner(System.in);
-//        System.out.println("hmm... it appears there's a fork in the road. Shall you go left or right?");
-//        String input = pointless.nextLine();
-//        if (Objects.equals(input, "left")) {
-//            System.out.println("You move towards the left path but you are accosted!!!!11!1one");
-//            Battle(enemy);
-//
-//        } else if (Objects.equals(input, "right")) {
-//            System.out.println("You sprint towards the right path but you see a SCARY MONSTER AAAAAAA");
-//            Battle(enemy);
-//        } else {
-//            System.out.println("Imma be real there's a path between the " +
-//                    "two and the monster can go between them so he's gonna come at you regardless" +
-//                    " so here's a battle");
-//            Battle(enemy);
-//        }
-//    }
-    //keeping all this here for an example
+    // public static void TestEncounter() {
+    // Character enemy = new Character("Foul Creature", 20, 4, "basic");
+    // Scanner pointless = new Scanner(System.in);
+    // System.out.println("hmm... it appears there's a fork in the road. Shall you
+    // go left or right?");
+    // String input = pointless.nextLine();
+    // if (Objects.equals(input, "left")) {
+    // System.out.println("You move towards the left path but you are
+    // accosted!!!!11!1one");
+    // Battle(enemy);
+    //
+    // } else if (Objects.equals(input, "right")) {
+    // System.out.println("You sprint towards the right path but you see a SCARY
+    // MONSTER AAAAAAA");
+    // Battle(enemy);
+    // } else {
+    // System.out.println("Imma be real there's a path between the " +
+    // "two and the monster can go between them so he's gonna come at you
+    // regardless" +
+    // " so here's a battle");
+    // Battle(enemy);
+    // }
+    // }
+    // keeping all this here for an example
+
+    public static void pickRandomEncounter() {
+        Random random = new Random();
+        int num = random.nextInt(2);
+
+        switch (num) {
+            case 1:
+                Jehovah();
+            case 2:
+                Gargoyle();
+        }
+    }
 
     public static void Jehovah() {
         boolean ending = false;
-        Character player = Main.playerCharacter; //probably not good but it's for testing
+        Character player = Main.playerCharacter; // probably not good but it's for testing
         Character enemy = new Character("Cultist", 15, 4, "basic");
         Scanner s = new Scanner(System.in);
         System.out.println("A group of people dressed in pine colored robes approach " + player.getName() +
                 ". The oldest one comes closest and asks");
-        //pause if possible
+        // pause if possible
         System.out.println("Do you have a minute to talk about our lord and saviour Cthulhu?");
         boolean talking = false;
         while (!talking) {
@@ -45,7 +61,7 @@ public class Encounter {
                         ", " + player.getName() + " feels their mind weakening and yearning for power");
                 player.setHealthPoints(player.getHealthPoints() - 15);
                 talking = true;
-            } else if (Objects.equals(input, "no") || Objects.equals(input, "nope")) { //don't ask idek
+            } else if (Objects.equals(input, "no") || Objects.equals(input, "nope")) { // don't ask idek
                 System.out.println("He rolls his sleeves up to his elbows and raises his fists");
                 System.out.println("Alright pal I'm going to have to teach you the old fashioned way");
                 talking = true;
@@ -60,30 +76,31 @@ public class Encounter {
     public static void Gargoyle() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Gargoyle", 25, 2, "Garg");
-        System.out.println("As " + player.getName() + " wanders around ruins they seem to notice a statue slowly rising and" +
-                " falling almost as if it were breathing");
+        System.out.println(
+                "As " + player.getName() + " wanders around ruins they seem to notice a statue slowly rising and" +
+                        " falling almost as if it were breathing");
         System.out.println("Almost without warning it turns its beastly head with an accompanying stone" +
                 " grating. With it's target now located it lurches toward " + player.getName() + "!");
         Battle(enemy);
     }
 
     public static void Battle(Character enemy) {
-        //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
+        // attack variance would be super easy to add. just add rand.nextInt(0, 6) to an
+        // attack and boom some luck.
         boolean turnTimer = true;
         boolean battle = true;
         boolean block = false;
-        boolean deathmode = false; //this is for one enemy type but idk where else to put it
+        boolean deathmode = false; // this is for one enemy type but idk where else to put it
         Character player = Main.playerCharacter;
-
 
         System.out.println("It appears " + player.getName() + " has been attacked by a " + enemy.getName() + "!");
         Scanner scanCool = new Scanner(System.in);
 
         while (battle) {
-            label:
-            while (turnTimer) {
+            label: while (turnTimer) {
                 if (player.getHealthPoints() <= 0) {
-                    System.out.println(player.getName() + "'s mind has been corrupted and dominated by the " + enemy.getName());
+                    System.out.println(
+                            player.getName() + "'s mind has been corrupted and dominated by the " + enemy.getName());
                     battle = false;
                     break;
                 }
@@ -95,7 +112,8 @@ public class Encounter {
                     case "a":
                         player.attack(enemy);
                         System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
-                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
+                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints()
+                                + " Health!");
                         turnTimer = false;
                         break;
                     case "b":
@@ -111,9 +129,10 @@ public class Encounter {
                         battle = false;
                         break label;
                     default:
-                        System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
+                        System.out.println(
+                                player.getName() + "'s mind races and they fail to comprehend their surroundings");
                         player.setHealthPoints(player.getHealthPoints() - 1);
-                        //don't take this one too seriously I just thought it was funny
+                        // don't take this one too seriously I just thought it was funny
                         break;
                 }
             }
@@ -133,7 +152,8 @@ public class Encounter {
                     } else {
                         enemy.attackButBlock(player);
                         System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
-                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                (enemy.getAttack() / 4) + " damage! " + player.getName() + " has "
+                                + player.getHealthPoints()
                                 + " health.");
                         block = false;
                         turnTimer = true;
@@ -141,7 +161,9 @@ public class Encounter {
 
                 }
             }
-            if (battle && Objects.equals(enemy.getEnemyType(), "pipebomb")) { //the boolean before the check was just for dialogue and it works but idk a proper fix
+            if (battle && Objects.equals(enemy.getEnemyType(), "pipebomb")) { // the boolean before the check was just
+                                                                              // for dialogue and it works but idk a
+                                                                              // proper fix
                 System.out.println("you are holding a pipe bomb and it explodes");
                 player.setHealthPoints(0);
                 turnTimer = true;
@@ -172,7 +194,8 @@ public class Encounter {
                     } else {
                         enemy.attackButBlock(player);
                         System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
-                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                (enemy.getAttack() / 4) + " damage! " + player.getName() + " has "
+                                + player.getHealthPoints()
                                 + " health.");
                         block = false;
                         turnTimer = true;
@@ -191,7 +214,8 @@ public class Encounter {
             }
         }
     }
-    private static void randGarg () { //this is just for conciseness
+
+    private static void randGarg() { // this is just for conciseness
         Random rand = new Random();
         int randy = rand.nextInt(1, 3);
         if (randy == 3) {
@@ -203,5 +227,3 @@ public class Encounter {
         }
     }
 }
-
-

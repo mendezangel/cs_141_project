@@ -1,9 +1,10 @@
-    import java.util.Scanner;
+import java.util.Scanner;
 
 public class Character {
     // Fields
     private String name;
     private int level;
+    public final int maxHealth;
     private int healthPoints;
     private int manaPoints;
     private int attack;
@@ -13,10 +14,12 @@ public class Character {
     // Constructor
     public Character(String name, int hp, int attack, String enemyType) {
         // some of these values (health, mana, attack) are hardcoded, in theory we will
-        // want to implement some logic to set these values based on what class player chooses
+        // want to implement some logic to set these values based on what class player
+        // chooses
         this.name = name;
         this.level = 1;
         this.healthPoints = hp;
+        this.maxHealth = hp;
         this.manaPoints = 50;
         this.attack = attack;
         this.enemyType = enemyType;
@@ -29,22 +32,23 @@ public class Character {
         String name = console.next();
         int hp = 100;
         int attack = 5;
-        return  new Character(name, hp, attack, null);
+        console.close();
+        return new Character(name, hp, attack, null);
     }
 
     // Attack methods
     public void attack(Character target) {
-//        System.out.println(this.name + " attacks " + target.getName() + "!");
+        // System.out.println(this.name + " attacks " + target.getName() + "!");
         int health = target.getHealthPoints();
         int newHealth = health - this.attack;
         target.setHealthPoints(newHealth);
         // Implement attack logic here
     }
-    
-        public void attackButBlock(Character target) {
-        //System.out.println(this.name + " attacks " + target.getName() + "!");
+
+    public void attackButBlock(Character target) {
+        // System.out.println(this.name + " attacks " + target.getName() + "!");
         int health = target.getHealthPoints();
-        int newHealth = health - (this.attack/4); //1/4 the damage because blocking still sucked
+        int newHealth = health - (this.attack / 4); // 1/4 the damage because blocking still sucked
         target.setHealthPoints(newHealth);
     }
 
@@ -106,7 +110,6 @@ public class Character {
     public void setDefense(int defense) {
         this.defense = defense;
     }
-
 
     public String getEnemyType() {
         return this.enemyType;
