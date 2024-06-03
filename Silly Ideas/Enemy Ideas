@@ -7,7 +7,7 @@ dude where every ~3 attacks does a mega attack that has a warning
 Was thinking of a dude who could parry, like it says they brace/ enter a form but we would need an extra action that isn't attacking or blocking so the player could capitalize on the free oppurtunity. But maybe not idk. Maybe just not getting hit for a lot is a reward in itself.
 
 //PAIRS UP WITH MY Rats METHOD, SHOULD NOT BE ABLE TO BE FLED FROM. 
- if (Objects.equals(enemy.getEnemyType(), "Rodent")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
+        if (Objects.equals(enemy.getEnemyType(), "Rodent")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
                 Random rats = new Random();
                 while (!turnTimer) {
                     int bites = rats.nextInt(2, 11); //Every turn, a random number of rats with limit, attack the player.
@@ -21,39 +21,39 @@ Was thinking of a dude who could parry, like it says they brace/ enter a form bu
                             enemy.attack(player);
                             System.out.println("A rat bites " + player.getName() + " dealing 1 damage!");
                         } 
-                        System.out.println(player.getName + " has " + player.getHealthPoints() + " health!");
+                        System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                         turnTimer = true;
                     } else {
-                        System.out.println(player.getName + "'s attempts to block were futile! In their panic" +
+                        System.out.println(player.getName() + "'s attempts to block were futile! In their panic" +
                         " more of the swarm closes in!"
                         for(int i = -2; i < bites; i++) {
                             enemy.attack(player);
-                            System.out.println("A rat bites " + 
-                            player.getName() + " dealing 1 damage!");
+                            System.out.println("A rat bites " + player.getName() + " dealing 1 damage!");
                         }
-                        System.out.println(player.getName + " has " + player.getHealthPoints() + " health!");
+                        System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                         block = false;
                         turnTimer = true;
                     }
 
                 }
             }
+            
 
 //PAIRS UP WITH MY rejuvinatingSlime METHOD
-     if (Objects.equals(enemy.getEnemyType(), "Jelly")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
+ if (Objects.equals(enemy.getEnemyType(), "Jelly")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
-                        player.setHealthpoints(player.getHealthPoints + 10);
+                        player.setHealthpoints(player.getHealthPoints() + 12);
                         System.out.println("Attacking the Jelly only seemed to make a mess. A soothing mess!" +
-                            player.getName() + " has been healed by 10 Health Points leaving them with " + player.getHealthpoints +
+                            player.getName() + " has been healed by 12 Health Points leaving them with " + player.getHealthpoints() +
                             "The Jelly begins to scale the side of the building, back to the safety of the roof.");
                         battle = false;
                         break;
                     }
                     if (!block) {
-                        player.setHealthPoints(player.getHealthPoints + 3)
+                        player.setHealthPoints(player.getHealthPoints() + 5)
                         System.out.println("The Jelly spritzes " + player.getName() + " with refreshing mist!");
-                        System.out.println(player.getName + " has " + player.getHealthPoints() + " health!");
+                        System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                         turnTimer = true;
                     } else {
                         System.out.println("The Jelly wiggles playfully!");
@@ -61,4 +61,4 @@ Was thinking of a dude who could parry, like it says they brace/ enter a form bu
                         turnTimer = true;
                     }
                 }
-            }
+        }
