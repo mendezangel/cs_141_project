@@ -24,19 +24,19 @@ public class Main {
         // Endgame Boss Battle. Either a Set Battle or a
     }
 
-    public static void intro() {
+  public static void intro() {
         System.out.println(
-                "The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city."
-                        +
-                        "They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. "
-                        +
-                        "Their group had all passed, left withering in the bunker where they'd decided to hide out. It didn't last. "
-                        +
+                "The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city.");
+                        System.out.println(
+                        "They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. ");
+                        System.out.println(
+                        "Their group had all passed, left withering in the bunker where they'd decided to hide out. It didn't last. ");
+                        System.out.println(
                         "The survivor traced a finger along their handgun, it was a symbol of their identity. The grip had their name engraved on it...");
         playerCharacter = Character.createPlayerCharacter();
         System.out.println(playerCharacter.getName()
-                + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. "
-                +
+                + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. ");
+                System.out.println(
                 " It was called the Fracture; and" + playerCharacter.getName()
                 + " had to get through it if they wanted a chance to live.");
         Encounter.livingOoze();
