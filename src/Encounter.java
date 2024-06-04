@@ -388,7 +388,7 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                                             "are trapped");
                                     break label;
                                 }
-                                player.setHealthPoints(player.getHealthPoints() - 5);
+                                player.setHealthPoints(player.getHealthPoints() - (enemy.getAttack() * 2));
                                 System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
                                         " leaves their mind vulnerable.");
                                 System.out.println(player.getHealthPoints());
@@ -568,6 +568,81 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         }
     }
 }
+
+//One boss battle ancounter, no fleeing
+    public static void bossBattle(Character enemy) {
+        //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
+        boolean turnTimer = true;
+        boolean battle = true;
+        boolean block = false;
+        Character player = Main.playerCharacter;
+
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("It appears " + player.getName() + " has been attacked by a " + enemy.getName() + "!");
+        Scanner scanCool = new Scanner(System.in);
+
+        while (battle) {
+
+            label:
+            while (turnTimer) {
+                if (player.getHealthPoints() <= 0) {
+                    System.out.println(player.getName() + "'s mind has been corrupted and dominated by the " + enemy.getName());
+                    battle = false;
+                    break;
+                }
+
+                System.out.println("shall you (A)ttack or (B)lock?");
+                String input = scanCool.nextLine();
+
+                switch (input) {
+                    case "a":
+                        player.attack(enemy);
+                        System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
+                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
+                        turnTimer = false;
+                        break;
+                    case "b":
+                        block = true;
+                        System.out.println(player.getName() + " braces and prays for resilience");
+                        turnTimer = false;
+                        break;
+                    default:
+                        System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
+                        player.setHealthPoints(player.getHealthPoints() - 1);
+                        //don't take this one too seriously I just thought it was funny
+                        break;
+                }
+                break;
+            }
+
+            if (Objects.equals(enemy.getEnemyType(), "basic")) {
+                while (!turnTimer) {
+                    if (enemy.getHealthPoints() <= 0) {
+                        System.out.println("The " + enemy.getName() + " has been slain.");
+                        battle = false;
+                        break;
+                    }
+                    if (block == false) {
+                        enemy.attack(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                enemy.getAttack() + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
+                        turnTimer = true;
+                    } else {
+                        enemy.attackButBlock(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
+                        block = false;
+                        turnTimer = true;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
 
 
 
