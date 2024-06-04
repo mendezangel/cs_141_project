@@ -33,13 +33,39 @@ public class Encounter {
 
     public static void pickRandomEncounter() {
         Random random = new Random();
-        int num = random.nextInt(2);
+        int num = random.nextInt(15);
 
         switch (num) {
             case 1:
                 Jehovah();
             case 2:
                 Gargoyle();
+            case 3:
+                Voices();
+            case 4:
+                guidingLight();
+            case 5:
+                fauxLight();
+            case 6:
+                rejuvinatingSlime();
+            case 7:
+                Rats();
+            case 8:
+                fireDumpster();
+            case 9:
+                buildingCrumbling();
+            case 10:
+                energyBar();
+            case 11:
+                firstaidPack();
+            case 12:
+                theUndead();
+            case 13:
+                theUndead2();
+            case 14:
+                livingOoze2();
+            case 15:
+                angryMites();
         }
     }
 
