@@ -322,6 +322,21 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         Battle(enemy);
     }
 
+    //beginning encounter
+    public static void livingOoze() {
+		Character player = Main.playerCharacter; 
+		Character enemy = new Character("Living Ooze", 10, 1, "basic");
+		System.out.println("As " + player.getName() + " lungs finally adjusted to the fumes in the air" +
+		" a gelatinous mass catches their attention. It had picked up pieces of debree like gravel, and" +
+		" was stained with oil. A shoe circulated through the ooze. These were the creatures the Fracture" +
+		" had brought with it."); 
+		battle(enemy); 
+		System.out.println("Beings from forgotten realms cried out. Buildings crumbled. Wreckage around" +
+		" our Survivor shifted from damage and the creatures roaming inside them. Begrudingly," + player.getName() +
+		" moves onwards..." 
+}
+    
+    
     //basic enemy
     public static void livingOoze2() {
         Character player = Main.playerCharacter;
