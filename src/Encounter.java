@@ -194,10 +194,12 @@ public class Encounter {
                 System.out.println("Clutching their arm, they continue through the streets...");
                 player.setHealthPoints(player.getHealthPoints() - 5);
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             } else if (Objects.equals(input, "continue")) {
                 System.out.print(player.getName() + " continues ahead, and spares a glance behind themself." +
                         " The light through the tavern is gone.");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             } else {
                 System.out.println(
@@ -205,6 +207,7 @@ public class Encounter {
                                 " A pain scorches the side of their face, forcing them away. The light disappears.");
                 player.setHealthPoints(player.getHealthPoints() - 7);
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             }
         }
@@ -235,6 +238,7 @@ public class Encounter {
                 System.out.println(
                         "This confrontation pushed them to leap to a nearby buildings roof. Where they collapsed" +
                                 " from exhaustion...");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             } else if (Objects.equals(input, "descend")) {
                 System.out.println(player.getName() + " dives into the water, hoping the building doesn't cave" +
@@ -248,6 +252,7 @@ public class Encounter {
                         " perilous leap to a nearby building before collapsing from exhaustion...");
                 player.setHealthPoints(player.getHealthPoints() - 12);
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             } else {
                 System.out.println(player.getName() + "remained still as to not disturb the environment. They " +
@@ -274,16 +279,19 @@ public class Encounter {
             String input = movement.nextLine();
             if (Objects.equals(input, "forward")) {
                 System.out.print(player.getName() + " moves away from the light, returning to the street.");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             } else if (Objects.equals(input, "turn back")) {
                 System.out.print(player.getName() + " approaches the light, a coolness washes over them. As if they " +
                         " had received a deep massage or had exited an ice cold shower.");
                 player.setHealthPoints(player.getHealthPoints() + 10);
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             } else {
                 System.out.println("In their indecisiveness, " + player.getName()
                         + " the light faded. Leaving them to continue on alone...");
+                System.out.println("--------------------------------------------------------------------");
                 decision = true;
             }
         }
@@ -298,6 +306,7 @@ public class Encounter {
                         + player.getName() + ".");
         player.setHealthPoints(player.getHealthPoints() + 3);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+        System.out.println("--------------------------------------------------------------------");
     }
 
     public static void energyBar() {
@@ -307,6 +316,7 @@ public class Encounter {
                 " at a check-out stand.");
         player.setHealthPoints(player.getHealthPoints() + 5);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+        System.out.println("--------------------------------------------------------------------");
     }
 
     public static void firstaidPack() {
@@ -318,6 +328,7 @@ public class Encounter {
                 "A basic first aid pack's contents were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
         player.setHealthPoints(player.getHealthPoints() + 7);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
+        System.out.println("--------------------------------------------------------------------");
     }
 
     // basic enemy
@@ -349,14 +360,17 @@ public class Encounter {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Living Ooze", 10, 1, "basic");
         System.out.println("As " + player.getName() + " lungs finally adjusted to the fumes in the air" +
-                " a gelatinous mass catches their attention. It had picked up pieces of debree like gravel, and" +
-                " was stained with oil. A shoe circulated through the ooze. These were the creatures the Fracture" +
+                " a gelatinous mass catches their attention.");
+        System.out.println("It had picked up pieces of debris like gravel, and was stained with oil. " +
+                        "A shoe circulated through the ooze.");
+                System.out.println("These were the creatures the Fracture" +
                 " had brought with it.");
         Battle(enemy);
-        System.out.println("Beings from forgotten realms cried out. Buildings crumbled. Wreckage around" +
-                " our Survivor shifted from damage and the creatures roaming inside them. Begrudingly,"
+        System.out.println("Beings from forgotten realms cried out. Buildings crumbled. Wreckage strewn around");
+                System.out.println("Regardless of the damage and the creatures roaming inside them. Begrudgingly, "
                 + player.getName() +
                 " moves onwards...");
+        System.out.println("--------------------------------------------------------------------");
     }
 
     // basic enemy
@@ -385,6 +399,7 @@ public class Encounter {
         Battle(enemy);
         System.out.println(
                 player.getName() + " dashed back into wreckage. At least the decimated buildings provided cover...");
+        System.out.println("--------------------------------------------------------------------");
     }
 
     // BATTLE STARTS HERE
@@ -456,11 +471,12 @@ public class Encounter {
                                     "are trapped");
                             break label;
                         }
-                        player.setHealthPoints(player.getHealthPoints() - 5);
+                        player.setHealthPoints(player.getHealthPoints() - (enemy.getAttack() * 2));
                         System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
                                 " leaves their mind vulnerable.");
                         System.out.println(player.getHealthPoints());
                         battle = false;
+                        System.out.println("--------------------------------------------------------------------");
                         break label;
                     default:
                         System.out.println(
@@ -476,6 +492,7 @@ public class Encounter {
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The " + enemy.getName() + " has been slain.");
+                        System.out.println("--------------------------------------------------------------------");
                         battle = false;
                         break;
                     }
@@ -509,6 +526,7 @@ public class Encounter {
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The " + enemy.getName() + " completely stops moving.");
+                        System.out.println("--------------------------------------------------------------------");
                         battle = false;
                         break;
                     }
@@ -552,6 +570,7 @@ public class Encounter {
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The " + enemy.getName() + " vanishes with a flash of light.");
+                        System.out.println("--------------------------------------------------------------------");
                         battle = false;
                         break;
                     }
@@ -580,6 +599,7 @@ public class Encounter {
                                                      // player.
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The swarm retreats into the sewers...");
+                        System.out.println("--------------------------------------------------------------------");
                         battle = false;
                         break;
                     }
@@ -614,6 +634,7 @@ public class Encounter {
                                 " leaving them with " + player.getHealthPoints());
                         System.out.println(
                                 "The Jelly begins to scale the side of the building, back to the safety of the roof.");
+                        System.out.println("--------------------------------------------------------------------");
                         battle = false;
                         break;
                     }
@@ -643,4 +664,78 @@ public class Encounter {
             System.out.println("The gargoyle opens its clawed hand.");
         }
     }
+    //One boss battle ancounter, no fleeing
+    public static void bossBattle(Character enemy) {
+        //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
+        boolean turnTimer = true;
+        boolean battle = true;
+        boolean block = false;
+        Character player = Main.playerCharacter;
+
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("It appears " + player.getName() + " has been attacked by a " + enemy.getName() + "!");
+        Scanner scanCool = new Scanner(System.in);
+
+        while (battle) {
+
+            label:
+            while (turnTimer) {
+                if (player.getHealthPoints() <= 0) {
+                    System.out.println(player.getName() + "'s mind has been corrupted and dominated by the " + enemy.getName());
+                    battle = false;
+                    break;
+                }
+
+                System.out.println("shall you (A)ttack or (B)lock?");
+                String input = scanCool.nextLine();
+
+                switch (input) {
+                    case "a":
+                        player.attack(enemy);
+                        System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
+                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
+                        turnTimer = false;
+                        break;
+                    case "b":
+                        block = true;
+                        System.out.println(player.getName() + " braces and prays for resilience");
+                        turnTimer = false;
+                        break;
+                    default:
+                        System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
+                        player.setHealthPoints(player.getHealthPoints() - 1);
+                        //don't take this one too seriously I just thought it was funny
+                        break;
+                }
+                break;
+            }
+
+            if (Objects.equals(enemy.getEnemyType(), "basic")) {
+                while (!turnTimer) {
+                    if (enemy.getHealthPoints() <= 0) {
+                        System.out.println("The " + enemy.getName() + " has been slain.");
+                        battle = false;
+                        break;
+                    }
+                    if (block == false) {
+                        enemy.attack(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                enemy.getAttack() + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
+                        turnTimer = true;
+                    } else {
+                        enemy.attackButBlock(player);
+                        System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
+                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                + " health.");
+                        block = false;
+                        turnTimer = true;
+                    }
+
+                }
+            }
+        }
+    }
 }
+
+
