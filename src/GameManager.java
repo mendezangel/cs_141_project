@@ -19,6 +19,5 @@ public class GameManager {
                 + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. It was called the Fracture; and "
                 + playerName + " had to get through it if they wanted a chance to live.");
 
-        scanner.close();
     }
 }

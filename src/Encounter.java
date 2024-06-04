@@ -71,12 +71,12 @@ public class Encounter {
 
     public static void Jehovah() {
         boolean ending = false;
-        Character player = Main.playerCharacter; //probably not good but it's for testing
+        Character player = Main.playerCharacter; // probably not good but it's for testing
         Character enemy = new Character("Cultist", 15, 4, "basic");
         Scanner s = new Scanner(System.in);
         System.out.println("A group of people dressed in pine colored robes approach " + player.getName() +
                 ". The oldest one comes closest and asks");
-        //pause if possible
+        // pause if possible
         System.out.println("Do you have a minute to talk about our lord and saviour Cthulhu?");
         boolean talking = false;
         while (!talking) {
@@ -87,7 +87,7 @@ public class Encounter {
                         ", " + player.getName() + " feels their mind weakening and yearning for power");
                 player.setHealthPoints(player.getHealthPoints() - 15);
                 talking = true;
-            } else if (Objects.equals(input, "no") || Objects.equals(input, "nope")) { //don't ask idek
+            } else if (Objects.equals(input, "no") || Objects.equals(input, "nope")) { // don't ask idek
                 System.out.println("He rolls his sleeves up to his elbows and raises his fists");
                 System.out.println("Alright pal I'm going to have to teach you the old fashioned way");
                 talking = true;
@@ -102,8 +102,9 @@ public class Encounter {
     public static void Gargoyle() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Gargoyle", 25, 2, "Garg");
-        System.out.println("As " + player.getName() + " wanders around ruins they seem to notice a statue slowly rising and" +
-                " falling almost as if it were breathing");
+        System.out.println(
+                "As " + player.getName() + " wanders around ruins they seem to notice a statue slowly rising and" +
+                        " falling almost as if it were breathing");
         System.out.println("Almost without warning it turns its beastly head with an accompanying stone" +
                 " grating. With it's target now located it lurches toward " + player.getName() + "!");
         Battle(enemy);
@@ -111,46 +112,51 @@ public class Encounter {
 
     public static void Voices() {
         Character player = Main.playerCharacter;
-        Character enemy = new Character("Eldritch Spectre", 1, 12, "Ghost" );
+        Character enemy = new Character("Eldritch Spectre", 1, 12, "Ghost");
         Scanner s = new Scanner(System.in);
         boolean spookyghost = true;
-        System.out.println("As " + player.getName() + " walks along a disheveled path darkness suddenly envelops them.");
-               System.out.println("Echoes shouting curses of impending doom in the voices of loved ones and some mirroring their own.");
+        System.out
+                .println("As " + player.getName() + " walks along a disheveled path darkness suddenly envelops them.");
+        System.out.println(
+                "Echoes shouting curses of impending doom in the voices of loved ones and some mirroring their own.");
         System.out.println("What can be done to fight back the intangible voices?");
-        while(spookyghost) {
+        while (spookyghost) {
             System.out.println("||(L)ash out into the darkness||");
             System.out.println("||(C)all out to the voices||");
             System.out.println("||(P)ray for safety||");
             String input = s.nextLine();
             if (Objects.equals(input, "l")) {
-System.out.println(player.getName() + " wildly strikes into the darkness only to be left with a wound opposite to where " +
-        "they had swung.");
-player.setHealthPoints(player.getHealthPoints() - 12);
+                System.out.println(player.getName()
+                        + " wildly strikes into the darkness only to be left with a wound opposite to where " +
+                        "they had swung.");
+                player.setHealthPoints(player.getHealthPoints() - 12);
             } else if (Objects.equals(input, "c")) {
-System.out.println("As " + player.getName() + " reaches out for help they can hear voices snickering and mocking them.");
-player.setHealthPoints(player.getHealthPoints() - 2);
+                System.out.println("As " + player.getName()
+                        + " reaches out for help they can hear voices snickering and mocking them.");
+                player.setHealthPoints(player.getHealthPoints() - 2);
             } else if (Objects.equals(input, "p")) {
-System.out.println(player.getName() + " prays for safety.");
-System.out.println("The voices silence themselves and the darkness weakens, revealing nearby pavement and debris.");
-System.out.println("A ghostly figure, seemingly injured due to the prayer reveals itself.");
-System.out.println("While not defenseless it can still be injured via prayer.");
-          Battle(enemy);
-          spookyghost = false;
-            }else {
+                System.out.println(player.getName() + " prays for safety.");
+                System.out.println(
+                        "The voices silence themselves and the darkness weakens, revealing nearby pavement and debris.");
+                System.out.println("A ghostly figure, seemingly injured due to the prayer reveals itself.");
+                System.out.println("While not defenseless it can still be injured via prayer.");
+                Battle(enemy);
+                spookyghost = false;
+            } else {
                 System.out.println(player.getName() + "'s voice calls out, \"You are confused and alone. This void " +
                         "will be your grave\"");
                 System.out.println(player.getName() + " can feel their mind liquefying");
                 player.setHealthPoints(player.getHealthPoints() - 2);
             }
-            }
         }
+    }
 
     public static void Rats() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Rat Swarm", 10, 1, "Rodent");
         System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
                 "something billowing out of the city drains. ");
-                System.out.println(player.getName() + " runs instinctively but the swarm swiftly meets their heels.");
+        System.out.println(player.getName() + " runs instinctively but the swarm swiftly meets their heels.");
         Battle(enemy);
     }
 
@@ -161,18 +167,20 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                 " The smoke inhalation from the dense smog was catching up to them.");
         System.out.println("They looked up at the sky and saw a Gelatinous Liquid descending down the wall" +
                 " straight towards them.");
-                System.out.println("It was transparent and aqua. Not particularly fast," +
-                        "it looked oddly appetizing.");
+        System.out.println("It was transparent and aqua. Not particularly fast," +
+                "it looked oddly appetizing.");
         Battle(enemy);
     }
 
-    //player makes a pathing decision, and can be moderately punished if they choose wrong.
+    // player makes a pathing decision, and can be moderately punished if they
+    // choose wrong.
     public static void fauxLight() {
         Character player = Main.playerCharacter;
         Scanner movement = new Scanner(System.in);
         System.out.println("As our Survivor traversed, the buildings around them became warped, creaking" +
                 " as if they were crying out.");
-                System.out.println("The tavern to " + player.getName() + "'s right was illuminated by a hopeful light, streaming through the space where a car had " +
+        System.out.println("The tavern to " + player.getName()
+                + "'s right was illuminated by a hopeful light, streaming through the space where a car had " +
                 "tunneled through it.");
         System.out.println("Then again, our Survivor was sure they were heading the right direction.");
         System.out.print("Should " + player.getName() + " go (right) or (continue) forward?");
@@ -192,8 +200,9 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                         " The light through the tavern is gone.");
                 decision = true;
             } else {
-                System.out.println("In their rumination, " + player.getName() + " failed to notice the light growing brighter." +
-                        " A pain scorches the side of their face, forcing them away. The light disappears.");
+                System.out.println(
+                        "In their rumination, " + player.getName() + " failed to notice the light growing brighter." +
+                                " A pain scorches the side of their face, forcing them away. The light disappears.");
                 player.setHealthPoints(player.getHealthPoints() - 7);
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                 decision = true;
@@ -201,16 +210,18 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         }
     }
 
-    //This or that. If the player choose wrong, they could take serious damage.
-    public static void buildingCrumbling() { //player makes a pathing decision, and is punished for it.
+    // This or that. If the player choose wrong, they could take serious damage.
+    public static void buildingCrumbling() { // player makes a pathing decision, and is punished for it.
         Character player = Main.playerCharacter;
         Scanner movement = new Scanner(System.in);
         System.out.println("Slipping into a nearby print shop " + player.getName() + " quickly" +
                 " realizes their grave error. The floor buckled underneath them, and they began to run.");
-        System.out.println("They moved through building, and came to a stairwell. The basement of the building was flooded, " +
-                "however " + player.getName() + " knew they could potentially swim out.");
-        System.out.println("They could also take their chances ascending to the roof. But the building could collapse " +
-                "beneath them. They were stalled with alarm.");
+        System.out.println(
+                "They moved through building, and came to a stairwell. The basement of the building was flooded, " +
+                        "however " + player.getName() + " knew they could potentially swim out.");
+        System.out
+                .println("They could also take their chances ascending to the roof. But the building could collapse " +
+                        "beneath them. They were stalled with alarm.");
         System.out.println("Should " + player.getName() + " (ascend) or (descend)?");
 
         boolean decision = false;
@@ -218,20 +229,23 @@ System.out.println("While not defenseless it can still be injured via prayer.");
             String input = movement.nextLine();
             if (Objects.equals(input, "ascend")) {
                 System.out.println(player.getName() + " frantically climbed the stairs, forcing their" +
-                        " way through the fire escape at the top. The building swayed underneath them, they could fall " +
+                        " way through the fire escape at the top. The building swayed underneath them, they could fall "
+                        +
                         " to their death. ");
-                        System.out.println("This confrontation pushed them to leap to a nearby buildings roof. Where they collapsed" +
-                        " from exhaustion...");
+                System.out.println(
+                        "This confrontation pushed them to leap to a nearby buildings roof. Where they collapsed" +
+                                " from exhaustion...");
                 decision = true;
             } else if (Objects.equals(input, "descend")) {
                 System.out.println(player.getName() + " dives into the water, hoping the building doesn't cave" +
-                                " on top of them. ");
-                        System.out.println("The darkness of the basement didn't seem to be broken up by anything, and " +
+                        " on top of them. ");
+                System.out.println("The darkness of the basement didn't seem to be broken up by anything, and " +
                         " our Survivor realized they had to return to the stairwell and climb to the roof.");
-                                System.out.println(player.getName() + " frantically climbed the stairs but a piece of rubble above fell" +
+                System.out
+                        .println(player.getName() + " frantically climbed the stairs but a piece of rubble above fell" +
                                 " incapacitating them briefly.");
-                                        System.out.println("In a dazed manner, they make their way to the roof and make the" +
-                                " perilous leap to a nearby building before collapsing from exhaustion...");
+                System.out.println("In a dazed manner, they make their way to the roof and make the" +
+                        " perilous leap to a nearby building before collapsing from exhaustion...");
                 player.setHealthPoints(player.getHealthPoints() - 12);
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                 decision = true;
@@ -244,15 +258,16 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         }
     }
 
-    //If the player makes the correct decision they are Rewarded with a Heal!
+    // If the player makes the correct decision they are Rewarded with a Heal!
     public static void guidingLight() {
         Character player = Main.playerCharacter;
         Scanner movement = new Scanner(System.in);
         System.out.println(player.getName() + " made their way into an alley as the street had become clouded with a" +
                 " supernatural haze.");
-                System.out.println("Before they managed to reach the outlet, our Survivor realized their shadow was now" +
+        System.out.println("Before they managed to reach the outlet, our Survivor realized their shadow was now" +
                 " cast in front of them.");
-                System.out.println("They turned around to see a blue light beaming from their entry more luminous than anything encountered...");
+        System.out.println(
+                "They turned around to see a blue light beaming from their entry more luminous than anything encountered...");
         System.out.println("Should " + player.getName() + "go (forward) or (turn back)?");
         boolean decision = false;
         while (decision == false) {
@@ -267,17 +282,20 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                 System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                 decision = true;
             } else {
-                System.out.println("In their indecisiveness, " + player.getName() + " the light faded. Leaving them to continue on alone...");
+                System.out.println("In their indecisiveness, " + player.getName()
+                        + " the light faded. Leaving them to continue on alone...");
                 decision = true;
             }
         }
     }
 
-    //Next 3 encounters are healing encounters!
+    // Next 3 encounters are healing encounters!
     public static void fireDumpster() {
         Character player = Main.playerCharacter;
         System.out.println("The challenging landscape leveled out upon entrance to a parking lot.");
-                System.out.println("A metal dumpster lit ablaze indicated other Survivors had made their way through. The thought grounded " + player.getName() + ".");
+        System.out.println(
+                "A metal dumpster lit ablaze indicated other Survivors had made their way through. The thought grounded "
+                        + player.getName() + ".");
         player.setHealthPoints(player.getHealthPoints() + 3);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
     }
@@ -285,59 +303,63 @@ System.out.println("While not defenseless it can still be injured via prayer.");
     public static void energyBar() {
         Character player = Main.playerCharacter;
         System.out.print(player.getName() + " stops at a crumbling grocery mart to scavenge for supplies.");
-                System.out.println(" Most of it was picked clean but they managed to find an energy bar forgotten" +
-                        " at a check-out stand.");
+        System.out.println(" Most of it was picked clean but they managed to find an energy bar forgotten" +
+                " at a check-out stand.");
         player.setHealthPoints(player.getHealthPoints() + 5);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
     }
 
     public static void firstaidPack() {
         Character player = Main.playerCharacter;
-        System.out.println("To see a child care center in such a state brought a deep sadness over " + player.getName() + ".");
+        System.out.println(
+                "To see a child care center in such a state brought a deep sadness over " + player.getName() + ".");
         System.out.println("They entered into the kitchen, and the scene indicated a struggle had occurred.");
-                System.out.println("A basic first aid pack's contents were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
+        System.out.println(
+                "A basic first aid pack's contents were strewn about the floor. It was clear, it was not enough to assist with the wounds sustained by those who came before.");
         player.setHealthPoints(player.getHealthPoints() + 7);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
     }
 
-    //basic enemy
+    // basic enemy
     public static void theUndead() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Undead Women", 20, 5, "basic");
         System.out.println("The door to a nearby town home is forced open... A human figure " +
                 "stumbles through it. It seemed to be a resident. Her skin was pale, and peeling.");
-                System.out.println(player.getName() + " questioned how she was even living. What seemed like pained groans " +
+        System.out.println(player.getName() + " questioned how she was even living. What seemed like pained groans " +
                 "were nothing but gas escaping her system. She wasn't alive.");
         Battle(enemy);
     }
 
-    //basic enemy
+    // basic enemy
     public static void theUndead2() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Undead Man", 20, 5, "basic");
         System.out.println(player.getName() + " knew the Fracture was a horrid phenomenon " +
-                        "but the recent sights they had witnessed challenged their mental fortitude.");
-        System.out.println("The man had an endless hunger, and devoured only god knows what with a ferocity unknown to " + player.getName() + ".");
-        System.out.println("The figure faced our Survivor, his skin was pale and flaking. The corpse's eyes were piercing.");
+                "but the recent sights they had witnessed challenged their mental fortitude.");
+        System.out.println("The man had an endless hunger, and devoured only god knows what with a ferocity unknown to "
+                + player.getName() + ".");
+        System.out.println(
+                "The figure faced our Survivor, his skin was pale and flaking. The corpse's eyes were piercing.");
         Battle(enemy);
     }
 
-    //beginning encounter
+    // beginning encounter
     public static void livingOoze() {
-		Character player = Main.playerCharacter; 
-		Character enemy = new Character("Living Ooze", 10, 1, "basic");
-		System.out.println("As " + player.getName() + " lungs finally adjusted to the fumes in the air" +
-		" a gelatinous mass catches their attention. It had picked up pieces of debree like gravel, and" +
-		" was stained with oil. A shoe circulated through the ooze. These were the creatures the Fracture" +
-		" had brought with it."); 
-		battle(enemy); 
-		System.out.println("Beings from forgotten realms cried out. Buildings crumbled. Wreckage around" +
-		" our Survivor shifted from damage and the creatures roaming inside them. Begrudingly," + player.getName() +
-		" moves onwards..." 
-}
-    
-    
-    //basic enemy
+        Character player = Main.playerCharacter;
+        Character enemy = new Character("Living Ooze", 10, 1, "basic");
+        System.out.println("As " + player.getName() + " lungs finally adjusted to the fumes in the air" +
+                " a gelatinous mass catches their attention. It had picked up pieces of debree like gravel, and" +
+                " was stained with oil. A shoe circulated through the ooze. These were the creatures the Fracture" +
+                " had brought with it.");
+        Battle(enemy);
+        System.out.println("Beings from forgotten realms cried out. Buildings crumbled. Wreckage around" +
+                " our Survivor shifted from damage and the creatures roaming inside them. Begrudingly,"
+                + player.getName() +
+                " moves onwards...");
+    }
+
+    // basic enemy
     public static void livingOoze2() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Living Ooze", 15, 4, "basic");
@@ -346,13 +368,14 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         Battle(enemy);
     }
 
-    //An encounter thats simple but maybe a little annoying!
+    // An encounter thats simple but maybe a little annoying!
 
     public static void angryMites() {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Fracture Mite", 3, 3, "basic");
         System.out.println("This part of the city had been leveled. Nervously, our Survivor made their" +
-                " way out of cover and across this concrete plane. All was quiet, until something nicked " + player.getName());
+                " way out of cover and across this concrete plane. All was quiet, until something nicked "
+                + player.getName());
         player.setHealthPoints(player.getHealthPoints() - 3);
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
         System.out.println("The insectoid creature shook concrete dust off of itself.");
@@ -360,20 +383,23 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         System.out.println(player.getName() + " realized this entire plane could be full of these things." +
                 " They began to carry on but were interrupted once again by-");
         Battle(enemy);
-        System.out.println(player.getName() + " dashed back into wreckage. At least the decimated buildings provided cover...");
+        System.out.println(
+                player.getName() + " dashed back into wreckage. At least the decimated buildings provided cover...");
     }
 
-//BATTLE STARTS HERE
-
+    // BATTLE STARTS HERE
 
     public static void Battle(Character enemy) {
-        //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
+        // attack variance would be super easy to add. just add rand.nextInt(0, 6) to an
+        // attack and boom some luck.
         boolean turnTimer = true;
         boolean battle = true;
         boolean block = false;
-        boolean deathmode = false; //this is for one enemy type but idk where else to put it
+        boolean deathmode = false; // this is for one enemy type but idk where else to put it
         int ghostmeter = 0;
-        if (enemy.getEnemyType() == "Ghost") {ghostmeter = 3; } //same here but this one is worse
+        if (enemy.getEnemyType() == "Ghost") {
+            ghostmeter = 3;
+        } // same here but this one is worse
         Character player = Main.playerCharacter;
 
         System.out.println("--------------------------------------------------------------------");
@@ -382,67 +408,69 @@ System.out.println("While not defenseless it can still be injured via prayer.");
 
         while (battle) {
 
-            label:
-            while (turnTimer) {
+            label: while (turnTimer) {
                 if (player.getHealthPoints() <= 0) {
-                    System.out.println(player.getName() + "'s mind has been corrupted and dominated by the " + enemy.getName());
+                    System.out.println(
+                            player.getName() + "'s mind has been corrupted and dominated by the " + enemy.getName());
                     battle = false;
                     break;
                 }
 
                 System.out.println("shall you (A)ttack (B)lock or (F)lee?");
-                String input = scanCool.nextLine();
+                String input = scanCool.next();
 
                 switch (input) {
                     case "a":
                         if (ghostmeter > 0) {
-                        System.out.println(player.getName() + " fires at the figure, but the apparition " +
-                                "doesn't even flicker.");
-                        turnTimer = false;
-                        break;
-                        }
-                            player.attack(enemy);
-                            System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
-                                    + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints() + " Health!");
+                            System.out.println(player.getName() + " fires at the figure, but the apparition " +
+                                    "doesn't even flicker.");
                             turnTimer = false;
                             break;
-                            case "b":
-                                if (ghostmeter > 0 ) {
-                                    block = true;
-                                    System.out.println(player.getName() + " braces and prays for resilience");
-                                    System.out.println("The figure seizes and shrieks as the darkness is pushed further away");
-                                    ghostmeter -= 1;
-                                    if (ghostmeter == 0) {
-                                        System.out.println("The figure reveals it's corporeal form, a twisting mass of" +
-                                                " flesh and vines warped into a humanoid figure. it is now vulnerable ");
-                                    }
-                                    turnTimer = false;
-                                    break;
-                                }
-                                block = true;
-                                System.out.println(player.getName() + " braces and prays for resilience");
-                                turnTimer = false;
-                                break;
-                            case "f":
-                                if (ghostmeter > 0) {
-                                    System.out.println(player.getName() + " cannot find a direction to move to. They " +
-                                            "are trapped");
-                                    break label;
-                                }
-                                player.setHealthPoints(player.getHealthPoints() - 5);
-                                System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
-                                        " leaves their mind vulnerable.");
-                                System.out.println(player.getHealthPoints());
-                                battle = false;
-                                break label;
-                            default:
-                                System.out.println(player.getName() + "'s mind races and they fail to comprehend their surroundings");
-                                player.setHealthPoints(player.getHealthPoints() - 1);
-                                //don't take this one too seriously I just thought it was funny
-                                break;
                         }
+                        player.attack(enemy);
+                        System.out.println(player.getName() + " blasts the " + enemy.getName() + " for "
+                                + player.getAttack() + " damage leaving it with " + enemy.getHealthPoints()
+                                + " Health!");
+                        turnTimer = false;
+                        break;
+                    case "b":
+                        if (ghostmeter > 0) {
+                            block = true;
+                            System.out.println(player.getName() + " braces and prays for resilience");
+                            System.out.println("The figure seizes and shrieks as the darkness is pushed further away");
+                            ghostmeter -= 1;
+                            if (ghostmeter == 0) {
+                                System.out.println("The figure reveals it's corporeal form, a twisting mass of" +
+                                        " flesh and vines warped into a humanoid figure. it is now vulnerable ");
+                            }
+                            turnTimer = false;
+                            break;
+                        }
+                        block = true;
+                        System.out.println(player.getName() + " braces and prays for resilience");
+                        turnTimer = false;
+                        break;
+                    case "f":
+                        if (ghostmeter > 0) {
+                            System.out.println(player.getName() + " cannot find a direction to move to. They " +
+                                    "are trapped");
+                            break label;
+                        }
+                        player.setHealthPoints(player.getHealthPoints() - 5);
+                        System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
+                                " leaves their mind vulnerable.");
+                        System.out.println(player.getHealthPoints());
+                        battle = false;
+                        break label;
+                    default:
+                        System.out.println(
+                                player.getName() + "'s mind races and they fail to comprehend their surroundings");
+                        player.setHealthPoints(player.getHealthPoints() - 1);
+                        // don't take this one too seriously I just thought it was funny
                         break;
                 }
+                break;
+            }
 
             if (Objects.equals(enemy.getEnemyType(), "basic")) {
                 while (!turnTimer) {
@@ -460,7 +488,8 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                     } else {
                         enemy.attackButBlock(player);
                         System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
-                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                (enemy.getAttack() / 4) + " damage! " + player.getName() + " has "
+                                + player.getHealthPoints()
                                 + " health.");
                         block = false;
                         turnTimer = true;
@@ -468,13 +497,14 @@ System.out.println("While not defenseless it can still be injured via prayer.");
 
                 }
             }
-            if (battle && Objects.equals(enemy.getEnemyType(), "pipebomb")) { //the boolean before the check was just for dialogue and it works but idk a proper fix
+            if (battle && Objects.equals(enemy.getEnemyType(), "pipebomb")) { // the boolean before the check was just
+                                                                              // for dialogue and it works but idk a
+                                                                              // proper fix
                 System.out.println("you are holding a pipe bomb and it explodes");
                 player.setHealthPoints(0);
                 turnTimer = true;
             }
             if (Objects.equals(enemy.getEnemyType(), "Garg")) {
-
 
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
@@ -500,7 +530,8 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                     } else {
                         enemy.attackButBlock(player);
                         System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
-                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                (enemy.getAttack() / 4) + " damage! " + player.getName() + " has "
+                                + player.getHealthPoints()
                                 + " health.");
                         block = false;
                         turnTimer = true;
@@ -533,7 +564,8 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                     } else {
                         enemy.attackButBlock(player);
                         System.out.println("The " + enemy.getName() + " strikes " + player.getName() + " dealing " +
-                                (enemy.getAttack()/4) + " damage! " + player.getName() + " has " + player.getHealthPoints()
+                                (enemy.getAttack() / 4) + " damage! " + player.getName() + " has "
+                                + player.getHealthPoints()
                                 + " health.");
                         block = false;
                         turnTimer = true;
@@ -541,17 +573,19 @@ System.out.println("While not defenseless it can still be injured via prayer.");
 
                 }
             }
-            if (Objects.equals(enemy.getEnemyType(), "Rodent")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
+            if (Objects.equals(enemy.getEnemyType(), "Rodent")) { // MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
                 Random rats = new Random();
                 while (!turnTimer) {
-                    int bites = rats.nextInt(2, 11); //Every turn, a random number of rats with limit, attack the player.
+                    int bites = rats.nextInt(2, 11); // Every turn, a random number of rats with limit, attack the
+                                                     // player.
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The swarm retreats into the sewers...");
                         battle = false;
                         break;
                     }
                     if (!block) {
-                        for(int i = 0; i < bites; i++) { //blocking is ineffective, and actually does more harm than good
+                        for (int i = 0; i < bites; i++) { // blocking is ineffective, and actually does more harm than
+                                                          // good
                             enemy.attack(player);
                             System.out.println("A rat bites " + player.getName() + " dealing 1 damage!");
                         }
@@ -560,7 +594,7 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                     } else {
                         System.out.println(player.getName() + "'s attempts to block were futile! In their panic" +
                                 " more of the swarm closes in!");
-                        for(int i = -2; i < bites; i++) {
+                        for (int i = -2; i < bites; i++) {
                             enemy.attack(player);
                             System.out.println("A rat bites " + player.getName() + " dealing 1 damage!");
                         }
@@ -571,14 +605,15 @@ System.out.println("While not defenseless it can still be injured via prayer.");
 
                 }
             }
-            if (Objects.equals(enemy.getEnemyType(), "Jelly")) { //MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
+            if (Objects.equals(enemy.getEnemyType(), "Jelly")) { // MUST BE INSERTED INTO THE BATTLE METHOD FOR TESTING
                 while (!turnTimer) {
                     if (enemy.getHealthPoints() <= 0) {
                         player.setHealthPoints(player.getHealthPoints() + 12);
                         System.out.println("Attacking the Jelly only seemed to make a mess. A soothing mess!");
-                                System.out.println(player.getName() + " has been healed 12 Health Points" +
-                                        " leaving them with " + player.getHealthPoints());
-                                 System.out.println("The Jelly begins to scale the side of the building, back to the safety of the roof.");
+                        System.out.println(player.getName() + " has been healed 12 Health Points" +
+                                " leaving them with " + player.getHealthPoints());
+                        System.out.println(
+                                "The Jelly begins to scale the side of the building, back to the safety of the roof.");
                         battle = false;
                         break;
                     }
@@ -595,9 +630,9 @@ System.out.println("While not defenseless it can still be injured via prayer.");
                 }
             }
         }
-        }
+    }
 
-    private static void randGarg () { //this is just for conciseness
+    private static void randGarg() { // this is just for conciseness
         Random rand = new Random();
         int randy = rand.nextInt(1, 3);
         if (randy == 3) {
@@ -609,7 +644,3 @@ System.out.println("While not defenseless it can still be injured via prayer.");
         }
     }
 }
-
-
-
-

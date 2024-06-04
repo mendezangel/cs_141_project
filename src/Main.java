@@ -18,18 +18,27 @@ public class Main {
         // Encounter.Jehovah();
         // or even this one!
         intro();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             Encounter.pickRandomEncounter();
         }
-        //Endgame Boss Battle. Either a Set Battle or a 
+        // Endgame Boss Battle. Either a Set Battle or a
     }
+
     public static void intro() {
-        System.out.println("The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city." +
-        "They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. " +
-        "Their group had all passed, left withering in the bunker where they'd decided to hide out. It didn't last. " +
-        "The survivor traced a finger along their handgun, it was a symbol of their identity. The grip had their name engraved on it...");
+        System.out.println(
+                "The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city."
+                        +
+                        "They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. "
+                        +
+                        "Their group had all passed, left withering in the bunker where they'd decided to hide out. It didn't last. "
+                        +
+                        "The survivor traced a finger along their handgun, it was a symbol of their identity. The grip had their name engraved on it...");
         playerCharacter = Character.createPlayerCharacter();
-        System.out.println(playerCharacter.getName() + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. " +
-        " It was called the Fracture; and" + playerCharacter.getName() + " had to get through it if they wanted a chance to live.");
+        System.out.println(playerCharacter.getName()
+                + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. "
+                +
+                " It was called the Fracture; and" + playerCharacter.getName()
+                + " had to get through it if they wanted a chance to live.");
         Encounter.livingOoze();
+    }
 }

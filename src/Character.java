@@ -32,7 +32,6 @@ public class Character {
         String name = console.next();
         int hp = 100;
         int attack = 5;
-        console.close();
         return new Character(name, hp, attack, null);
     }
 
