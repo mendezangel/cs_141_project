@@ -19,26 +19,27 @@ public class Main {
         // or even this one!
         intro();
         for (int i = 0; i < 5; i++) {
+            Thread.sleep(3500);
             Encounter.pickRandomEncounter();
         }
         // Endgame Boss Battle. Either a Set Battle or a
     }
 
-  public static void intro() {
-        System.out.println(
-                "The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city.");
-                        System.out.println(
-                        "They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. ");
-                        System.out.println(
-                        "Their group had all passed, left withering in the bunker where they'd decided to hide out. It didn't last. ");
-                        System.out.println(
-                        "The survivor traced a finger along their handgun, it was a symbol of their identity. The grip had their name engraved on it...");
+    public static void intro() {
+        System.out.println("The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city.");
+        Thread.sleep(3000);
+        System.out.println("They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. ");
+        Thread.sleep(3000);
+        System.out.println("Their group had all passed, left withering in the bunker where they'd decided to hide out. It didn't last. ");
+        Thread.sleep(3000);
+        System.out.println("The survivor traced a finger along their handgun, it was a symbol of their identity. The grip had their name engraved on it...");
         playerCharacter = Character.createPlayerCharacter();
-        System.out.println(playerCharacter.getName()
-                + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. ");
-                System.out.println(
-                " It was called the Fracture; and" + playerCharacter.getName()
-                + " had to get through it if they wanted a chance to live.");
+        Thread.sleep(3000);
+        System.out.println(playerCharacter.getName() + " continued through the debris. Something other wordly had impacted their environment creating a sort of 'in-between'. ");
+        Thread.sleep(3000);
+        System.out.println(" It was called the Fracture; and" + playerCharacter.getName() 
+        + " had to get through it if they wanted a chance to live.");
+        Thread.sleep(3000);
         Encounter.livingOoze();
     }
 }
