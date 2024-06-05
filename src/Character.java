@@ -28,7 +28,7 @@ public class Character {
     // Methods
     public static Character createPlayerCharacter() {
         Scanner console = new Scanner(System.in);
-        System.out.print("please enter name for character: ");
+        System.out.print("Please enter name for character: ");
         String name = console.next();
         int hp = 100;
         int attack = 5;
