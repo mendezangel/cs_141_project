@@ -20,9 +20,10 @@ public class Main {
         intro();
         for (int i = 0; i < 5; i++) {
             Thread.sleep(3500);
+            System.out.println();
             Encounter.pickRandomEncounter();
         }
-        // Endgame Boss Battle. Either a Set Battle or a
+        Encounter.cthulhufight(); 
     }
 
     public static void intro() {
