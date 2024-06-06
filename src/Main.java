@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     static Character playerCharacter;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // GameManager game = new GameManager();
         // Character playerCharacter = Character.createPlayerCharacter();
         // game.initializeGame(playerCharacter.getName());
@@ -20,13 +20,13 @@ public class Main {
         intro();
         for (int i = 0; i < 5; i++) {
             Thread.sleep(3500);
-            System.out.println();
+            System.out.println("\n\n");
             Encounter.pickRandomEncounter();
         }
-        Encounter.cthulhufight(); 
+        Encounter.cthulhuFight();
     }
 
-    public static void intro() {
+    public static void intro() throws InterruptedException {
         System.out.println("The lone survivor stumbles through wreckage, and lays eyes upon the devastation to the surrounding city.");
         Thread.sleep(3000);
         System.out.println("They began to cough as smoke clogged their lungs, but even still it was more refreshing than where they'd been. ");

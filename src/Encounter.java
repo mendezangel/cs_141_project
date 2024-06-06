@@ -31,45 +31,59 @@ public class Encounter {
     // }
     // keeping all this here for an example
 
-    public static void pickRandomEncounter() {
+    public static void pickRandomEncounter() throws InterruptedException {
         Random random = new Random();
-        int num = random.nextInt(15);
-
+        int num = random.nextInt(16);
         switch (num) {
             case 1:
                 Jehovah();
+                break;
             case 2:
                 Gargoyle();
+                break;
             case 3:
                 Voices();
+                break;
             case 4:
                 guidingLight();
+                break;
             case 5:
                 fauxLight();
+                break;
             case 6:
                 rejuvinatingSlime();
+                break;
             case 7:
                 Rats();
+                break;
             case 8:
                 fireDumpster();
+                break;
             case 9:
                 buildingCrumbling();
+                break;
             case 10:
                 energyBar();
+                break;
             case 11:
                 firstaidPack();
+                break;
             case 12:
                 theUndead();
+                break;
             case 13:
                 theUndead2();
+                break;
             case 14:
                 livingOoze2();
+                break;
             case 15:
                 angryMites();
+                break;
         }
     }
 
-    public static void Jehovah() {
+    public static void Jehovah() throws InterruptedException {
         boolean ending = false;
         Character player = Main.playerCharacter; // probably not good but it's for testing
         Character enemy = new Character("Cultist", 15, 7, "basic");
@@ -105,7 +119,7 @@ public class Encounter {
 
     }
 
-    public static void Gargoyle() {
+    public static void Gargoyle() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Gargoyle", 25, 4, "Garg");
         System.out.println("As " + player.getName() + " wanders around ruins they seem to notice a statue slowly rising and" +
@@ -116,7 +130,7 @@ public class Encounter {
         Battle(enemy);
     }
 
-    public static void Voices() {
+    public static void Voices() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Eldritch Spectre", 1, 12, "Ghost");
         Scanner s = new Scanner(System.in);
@@ -167,7 +181,7 @@ public class Encounter {
         }
     }
 
-    public static void Rats() {
+    public static void Rats() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Rat Swarm", 10, 2, "Rodent");
         System.out.println("Pebbles begin to tremble, and out of their peripheral " + player.getName() + " notices " +
@@ -177,7 +191,7 @@ public class Encounter {
         Battle(enemy);
     }
 
-    public static void rejuvinatingSlime() {
+    public static void rejuvinatingSlime() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Rejuvinating Jelly", 10, 0, "Jelly");
         System.out.println(player.getName() + " leaned against a brick building as they collected themself." +
@@ -185,7 +199,7 @@ public class Encounter {
         Thread.sleep(3000);
         System.out.println("They looked up at the sky and saw a Gelatinous Liquid descending down the wall" +
                 " straight towards them.");
-        Thread.sleep(3000)
+        Thread.sleep(3000);
         System.out.println("The Jelly was transparent and aqua. Not particularly fast," +
                 "it looked oddly appetizing.");
         Battle(enemy);
@@ -193,7 +207,7 @@ public class Encounter {
 
     // player makes a pathing decision, and can be moderately punished if they
     // choose wrong.
-    public static void fauxLight() {
+    public static void fauxLight() throws InterruptedException {
         Character player = Main.playerCharacter;
         Scanner movement = new Scanner(System.in);
         System.out.println("As our Survivor traversed, the buildings around them became warped, creaking" +
@@ -207,7 +221,7 @@ public class Encounter {
         Thread.sleep(2000);
         System.out.print("Should " + player.getName() + " go (right) or (continue) forward?");
         boolean decision = false;
-        while (decision == false) {
+        while (!decision) {
             String input = movement.nextLine();
             if (Objects.equals(input, "right")) {
                 Thread.sleep(1000);
@@ -239,7 +253,7 @@ public class Encounter {
     }
 
     // This or that. If the player choose wrong, they could take serious damage.
-    public static void buildingCrumbling() { // player makes a pathing decision, and is punished for it.
+    public static void buildingCrumbling() throws InterruptedException { // player makes a pathing decision, and is punished for it.
         Character player = Main.playerCharacter;
         Scanner movement = new Scanner(System.in);
         System.out.println("Slipping into a nearby print shop " + player.getName() + " quickly" +
@@ -296,7 +310,7 @@ public class Encounter {
     }
 
     // If the player makes the correct decision they are Rewarded with a Heal!
-    public static void guidingLight() {
+    public static void guidingLight() throws InterruptedException {
         Character player = Main.playerCharacter;
         Scanner movement = new Scanner(System.in);
         System.out.println(player.getName() + " made their way into an alley as the street had become clouded with a" +
@@ -333,7 +347,7 @@ public class Encounter {
     }
 
     // Next 3 encounters are healing encounters!
-    public static void fireDumpster() {
+    public static void fireDumpster() throws InterruptedException {
         Character player = Main.playerCharacter;
         System.out.println("The challenging landscape leveled out upon entrance to a parking lot.");
         Thread.sleep(2000);
@@ -345,7 +359,7 @@ public class Encounter {
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
     }
 
-    public static void energyBar() {
+    public static void energyBar() throws InterruptedException {
         Character player = Main.playerCharacter;
         System.out.print(player.getName() + " stops at a crumbling grocery mart to scavenge for supplies.");
         Thread.sleep(2000);
@@ -356,7 +370,7 @@ public class Encounter {
         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
     }
 
-    public static void firstaidPack() {
+    public static void firstaidPack() throws InterruptedException {
         Character player = Main.playerCharacter;
         System.out.println(
                 "To see a child care center in such a state brought a deep sadness over " + player.getName() + ".");
@@ -371,7 +385,7 @@ public class Encounter {
     }
 
     // basic enemy
-    public static void theUndead() {
+    public static void theUndead() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Undead Women", 20, 8, "basic");
         System.out.println("The door to a nearby town home is forced open... A human figure " +
@@ -383,7 +397,7 @@ public class Encounter {
     }
 
     // basic enemy
-    public static void theUndead2() {
+    public static void theUndead2() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Undead Man", 20, 8, "basic");
         System.out.println(player.getName() + " knew the Fracture was a horrid phenomenon " +
@@ -398,7 +412,7 @@ public class Encounter {
     }
 
     // beginning encounter
-    public static void livingOoze() {
+    public static void livingOoze() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Living Ooze", 10, 1, "basic");
         Thread.sleep(3000);
@@ -414,7 +428,7 @@ public class Encounter {
     }
 
     // basic enemy
-    public static void livingOoze2() {
+    public static void livingOoze2() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Living Ooze", 15, 5, "basic");
         System.out.println(player.getName() + " was halted underneath an overpass. A familiar foe " +
@@ -424,7 +438,7 @@ public class Encounter {
 
     // An encounter thats simple but maybe a little annoying!
 
-    public static void angryMites() {
+    public static void angryMites() throws InterruptedException {
         Character player = Main.playerCharacter;
         Character enemy = new Character("Fracture Mite", 3, 5, "basic");
         System.out.println("This part of the city had been leveled. Nervously, our Survivor made their" +
@@ -442,7 +456,7 @@ public class Encounter {
                 player.getName() + " dashed back into wreckage. At least the decimated buildings provided cover...");
     }
 
-     public static void cthulhuFight() {
+     public static void cthulhuFight() throws InterruptedException {
         Character player = Main.playerCharacter;
         System.out.println(player.getName() + " marches toward the source of all terrible power, the start of the fracture.");
         Thread.sleep(2000);
@@ -509,7 +523,7 @@ public class Encounter {
     
     // BATTLE STARTS HERE
 
-    public static void Battle(Character enemy) {
+    public static void Battle(Character enemy) throws InterruptedException {
         // attack variance would be super easy to add. just add rand.nextInt(0, 6) to an
         // attack and boom some luck.
         boolean turnTimer = true;
@@ -584,7 +598,7 @@ public class Encounter {
                                     "are trapped");
                             break label;
                         }
-                        player.setHealthPoints(player.getHealthPoints() - 10);
+                        player.setHealthPoints(player.getHealthPoints() - 100);
                         System.out.println(player.getName() + " successfully escapes, but their cowardly behavior" +
                                 " leaves their mind vulnerable.");
                         Thread.sleep(1000);
@@ -607,9 +621,9 @@ public class Encounter {
                     if (enemy.getHealthPoints() <= 0) {
                         Thread.sleep(1000);
                         System.out.println("The " + enemy.getName() + " has been slain.");
-                        player.setAttack(player.getAttack + 1);
+                        player.setAttack(player.getAttack() + 1);
                         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
-                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack + "!");
+                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack() + "!");
                         battle = false;
                         break;
                     }
@@ -643,10 +657,10 @@ public class Encounter {
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The " + enemy.getName() + " completely stops moving.");
                         Thread.sleep(750);
-                        player.setAttack(player.getAttack + 3);
+                        player.setAttack(player.getAttack() + 3);
                         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                         Thread.sleep(750);
-                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack + "!");
+                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack() + "!");
                         battle = false;
                         break;
                     }
@@ -693,10 +707,10 @@ public class Encounter {
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The " + enemy.getName() + " vanishes with a flash of light.");
                         Thread.sleep(750);
-                        player.setAttack(player.getAttack + 3);
+                        player.setAttack(player.getAttack() + 3);
                         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                         Thread.sleep(750);
-                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack + "!");
+                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack() + "!");
                         battle = false;
                         break;
                     }
@@ -725,11 +739,11 @@ public class Encounter {
                     int bites = rats.nextInt(2, 11); // Every turn, a random number of rats with limit, attack the player.
                     if (enemy.getHealthPoints() <= 0) {
                         System.out.println("The swarm retreats into the sewers...");
-                        player.setAttack(player.getAttack + 3);
+                        player.setAttack(player.getAttack() + 3);
                         Thread.sleep(750);
                         System.out.println(player.getName() + " has " + player.getHealthPoints() + " health!");
                         Thread.sleep(750);
-                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack + "!");
+                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack() + "!");
                         battle = false;
                         break;
                     }
@@ -770,9 +784,9 @@ public class Encounter {
                         Thread.sleep(750);
                         System.out.println(
                                 "The Jelly begins to scale the side of the building, back to the safety of the roof.");
-                        player.setAttack(player.getAttack + 3);
+                        player.setAttack(player.getAttack() + 3);
                         Thread.sleep(750);
-                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack + "!");
+                        System.out.println(player.getName() + " grows stronger! Their attack increased to " + player.getAttack() + "!");
                         battle = false;
                         break;
                     }
@@ -794,7 +808,7 @@ public class Encounter {
         }
     }
 
-    private static void randGarg() { // this is just for conciseness
+    private static void randGarg() throws InterruptedException { // this is just for conciseness
         Random rand = new Random();
         int randy = rand.nextInt(1, 3);
         Thread.sleep(1000);
@@ -806,9 +820,8 @@ public class Encounter {
             System.out.println("The gargoyle opens its clawed hand.");
         }
     }
-}
 
-    public static void bossBattle(Character enemy) {
+public static void bossBattle(Character enemy) throws InterruptedException {
         //attack variance would be super easy to add. just add rand.nextInt(0, 6) to an attack and boom some luck.
         boolean turnTimer = true;
         boolean battle = true;
@@ -884,13 +897,12 @@ public class Encounter {
                         turnTimer = true;
                         block = false;
 
-                    }
-                    else if (evil == 1) {
+                    } else if (evil == 1) {
                         System.out.print("The " + enemy.getName() + " swings its gargantuan arms...");
                         if (block) {
                             enemy.attackButBlock(player);
                             Thread.sleep(1000);
-                            System.out.println("Luckily it only grazes past " + player.getName() +"'s defense.");
+                            System.out.println("Luckily it only grazes past " + player.getName() + "'s defense.");
                             Thread.sleep(500);
                             System.out.println(player.getName() + " has " + player.getHealthPoints() + " health.");
                             evil++;
@@ -905,16 +917,14 @@ public class Encounter {
                             evil++;
                             turnTimer = true;
                         }
-                    }
-                    else if (evil == 2) {
+                    } else if (evil == 2) {
                         System.out.println("The " + enemy.getName() + " prepares a mighty strike, however it lowers its");
                         System.out.println("ability to ward off prayer.");
                         evil++;
                         turnTimer = true;
                         block = false;
 
-                    }
-                    else if (evil == 3) {
+                    } else if (evil == 3) {
                         System.out.println("The " + enemy.getName() + " strikes with a mix of mental and physical strength.");
                         if (block) {
                             Thread.sleep(1000);
@@ -939,8 +949,7 @@ public class Encounter {
 
                         }
 
-                    }
-                    else if (evil == 4) {
+                    } else if (evil == 4) {
                         if (block) {
                             System.out.println(player.getName() + " resists the onslaught and leaves unscathed.");
                             evil++;
@@ -949,16 +958,15 @@ public class Encounter {
                             turnTimer = true;
                             block = false;
                         } else {
-                        player.setAttack(player.getAttack() - 1);
-                        System.out.println(player.getName() + "'s grip loosens. Their attack has become weaker.");
-                        evil++;
+                            player.setAttack(player.getAttack() - 1);
+                            System.out.println(player.getName() + "'s grip loosens. Their attack has become weaker.");
+                            evil++;
                             Thread.sleep(1000);
                             System.out.println("The creature's holds a steadfast form.");
                             turnTimer = true;
                         }
 
-                    }
-                    else if (evil == 5) {
+                    } else if (evil == 5) {
                         if (block) {
                             System.out.println("The " + enemy.getName() + " misguides your prayer and slightly recovers");
                             enemy.setHealthPoints(enemy.getHealthPoints() + 10);
@@ -971,8 +979,9 @@ public class Encounter {
                             turnTimer = true;
                         }
                     }
-                    }
-
                 }
+
             }
         }
+    }
+}

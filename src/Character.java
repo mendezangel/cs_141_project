@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Character {
     // Fields
     private String name;
@@ -40,6 +42,7 @@ public class Character {
         // System.out.println(this.name + " attacks " + target.getName() + "!");
         int health = target.getHealthPoints();
         int newHealth = health - this.attack;
+        if (target == Main.playerCharacter && newHealth <= 0) System.exit(0);
         target.setHealthPoints(newHealth);
         // Implement attack logic here
     }
@@ -84,6 +87,10 @@ public class Character {
 
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
+        if (this == Main.playerCharacter && this.healthPoints <= 0) {
+            System.out.println(this.name + "'s mind has been corrupted and dominated.");
+            System.exit(0);
+        }
     }
 
     public int getManaPoints() {
